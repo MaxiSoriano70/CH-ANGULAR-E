@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAddFormComponent } from '../modal-add-form/modal-add-form.component';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [],
+  standalone: true,
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.css'
+  styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent {
 
+export class ToolbarComponent {
+  constructor(private modalService: NgbModal) {}
+
+  abrirModal() {
+    this.modalService.open(ModalAddFormComponent, { centered: true });
+  }
 }

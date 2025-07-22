@@ -1,0 +1,50 @@
+<div class="modal-header bg-color-principal">
+    <h5 class="modal-title text-white">Agregar Estudiante</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body bg-color-fondo">
+    <form id="form-registro">
+        <div class="mb-3">
+            <label for="nombreRegistro" class="form-label fw-bolder">Nombre:</label>
+            <input type="text" class="form-control bg-input" id="nombreRegistro" placeholder="Ingrese su nombre..."
+            minlength="3" maxlength="25" required>
+            <div id="nombreApellidoErrorRegistro" class="form-text">
+                Nombre no valido.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="apellidoRegistro" class="form-label fw-bolder">Apellido:</label>
+            <input type="text" class="form-control bg-input" id="apellidoRegistro" placeholder="Ingrese apellido..."
+            minlength="3" maxlength="25" required>
+            <div id="nombreApellidoErrorRegistro" class="form-text">
+                Nombre y Apellido no valido.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="edadRegistro" class="form-label fw-bolder">Edad</label>
+            <input type="number" class="form-control bg-input" id="edadRegistro" placeholder="Ingresa tu edad" min="1" max="120" required>
+            <div id="edadErrorRegistro" class="form-text">
+                Edad no valida.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="dniRegistro" class="form-label fw-bolder">Dni:</label>
+            <input type="number" class="form-control bg-input" id="dniRegistro" placeholder="Ingresa tu DNI" min="1000000" max="99999999" required>
+            <div id="dniErrorRegistro" class="form-text">
+                Dni no valido.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="promedioRegistro" class="form-label fw-bolder">Promedio:</label>
+            <input type="number" class="form-control bg-input" id="promedioRegistro" placeholder="Ingresa tu promedio" min="1" max="10" step="0.01" required>
+            <div id="promedioErrorRegistro" class="form-text">
+                Promedio no válido.
+            </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" id="botonRegistrarse" class="btn btn-personalized-2 mx-1 fw-bold" aria-label="Agregar">Agregar</button>
+            <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold" (click)="close()">Cancelar</button>
+        </div>
+    </form>
+</div>

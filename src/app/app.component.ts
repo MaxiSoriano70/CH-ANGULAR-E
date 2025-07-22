@@ -8,6 +8,7 @@ import { Student } from '../shared/emtities';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { NuestrosSponsorsComponent } from './nuestros-sponsors/nuestros-sponsors.component';
+import { ModalAddFormComponent } from './modal-add-form/modal-add-form.component';
 
 @Component({
   selector: 'app-root',
