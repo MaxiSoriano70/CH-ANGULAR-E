@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { BigtittleDirective } from '../../shared/directives/bigtittle.directive';
 
 @Component({
   selector: 'app-nuestros-sponsors',
-  imports: [],
+  imports: [BigtittleDirective],
   templateUrl: './nuestros-sponsors.component.html',
   styleUrl: './nuestros-sponsors.component.css'
 })
