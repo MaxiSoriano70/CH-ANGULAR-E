@@ -7,10 +7,11 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/emtities';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './students-table/students-table.component';
+import { NuestrosSponsorsComponent } from './nuestros-sponsors/nuestros-sponsors.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NavbarComponent, ToolbarComponent, StudentsTableComponent, FooterComponent],
+  imports: [RouterOutlet, CommonModule, NavbarComponent, NuestrosSponsorsComponent, ToolbarComponent, StudentsTableComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
