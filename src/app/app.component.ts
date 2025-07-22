@@ -11,7 +11,7 @@ import { NuestrosSponsorsComponent } from './nuestros-sponsors/nuestros-sponsors
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NavbarComponent, NuestrosSponsorsComponent, ToolbarComponent, StudentsTableComponent, FooterComponent],
+  imports: [CommonModule, NavbarComponent, NuestrosSponsorsComponent, ToolbarComponent, StudentsTableComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

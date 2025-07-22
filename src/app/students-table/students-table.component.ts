@@ -5,6 +5,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
 
 @Component({
   selector: 'app-students-table',
@@ -14,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FullnamePipe
   ],
   templateUrl: './students-table.component.html',
   styleUrls: ['./students-table.component.css']

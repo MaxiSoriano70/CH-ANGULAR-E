@@ -10,7 +10,7 @@
             <!-- FULLNAME -->
             <ng-container matColumnDef="fullname">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.name | fullname: row.surname}} </td>
             </ng-container>
 
             <!-- AGE -->
