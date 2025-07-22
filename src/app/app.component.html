@@ -2,6 +2,9 @@
     <app-navbar></app-navbar>
     <main class="mainPrincipal">
         <app-toolbar></app-toolbar>
+        <section class="sectionTableStudents">
+            <app-students-table [students]="students"></app-students-table>
+        </section>
         {{ students | json }}
     </main>
     <app-footer></app-footer>
