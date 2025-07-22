@@ -22,3 +22,11 @@
     min-height: 100dvh;
     grid-template-rows: auto 1fr auto;
 }
+
+.mainPrincipal{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
