@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddFormComponent } from '../modal-add-form/modal-add-form.component';
 import { Student } from '../../shared/emtities';
+declare const swal: any;
 
 @Component({
   selector: 'app-toolbar',
@@ -22,9 +23,14 @@ export class ToolbarComponent {
         console.log('Nuevo estudiante:', newStudent);
         if (newStudent) {
           this.addStudent.emit(newStudent);
+          swal("¡Éxito!", "El estudiante fue agregado correctamente.", "success");
+        } else {
+          swal("Error", "No se pudo agregar el estudiante.", "error");
         }
       },
-      () => {}
+      () => {
+        swal("Cancelado", "No se agregó ningún estudiante.", "info");
+      }
     );
   }
 }
