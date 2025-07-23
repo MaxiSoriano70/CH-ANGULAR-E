@@ -2,8 +2,9 @@
     <app-navbar></app-navbar>
     <main class="mainPrincipal">
         <app-nuestros-sponsors></app-nuestros-sponsors>
-        <app-toolbar></app-toolbar>
+        <app-toolbar (addStudent)="onStudentAdded($event)"></app-toolbar>
         <app-students-table [students]="students"></app-students-table>
+        {{students | json}}
     </main>
     <app-footer></app-footer>
 </div>

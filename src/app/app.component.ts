@@ -8,7 +8,6 @@ import { Student } from '../shared/emtities';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { NuestrosSponsorsComponent } from './nuestros-sponsors/nuestros-sponsors.component';
-import { ModalAddFormComponent } from './modal-add-form/modal-add-form.component';
 
 @Component({
   selector: 'app-root',
@@ -26,5 +25,10 @@ export class AppComponent implements OnInit{
     this.http.get<Student[]>('assets/mocks/students.json').subscribe(data => {
       this.students = data;
     });
+  }
+
+  onStudentAdded(student: Student) {
+    console.log('Recibido en AppComponent:', student);
+    this.students = [...this.students, student];
   }
 }

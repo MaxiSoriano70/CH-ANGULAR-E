@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import { Student } from '../../shared/emtities';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -30,19 +37,33 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  ngAfterViewInit(): void {
+    // Aquí asignamos paginator y sort después de que existan
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    // Inicializamos los datos para el primer render
+    this.dataSource.data = this.students;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['students']) {
+    if (changes['students'] && !changes['students'].firstChange) {
+      // Actualizamos los datos cuando cambian, pero NO la primera vez (para no sobrescribir antes de tener paginator y sort)
       this.dataSource.data = this.students;
+
+      // Volvemos a la primera página para que se refresque bien la tabla
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
     }
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

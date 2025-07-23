@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddFormComponent } from '../modal-add-form/modal-add-form.component';
+import { Student } from '../../shared/emtities';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,11 +9,22 @@ import { ModalAddFormComponent } from '../modal-add-form/modal-add-form.componen
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-
 export class ToolbarComponent {
+  @Output() addStudent = new EventEmitter<Student>();
+
   constructor(private modalService: NgbModal) {}
 
   abrirModal() {
-    this.modalService.open(ModalAddFormComponent, { centered: true });
+    const modalRef = this.modalService.open(ModalAddFormComponent, { centered: true });
+
+    modalRef.result.then(
+      (newStudent: Student) => {
+        console.log('Nuevo estudiante:', newStudent);
+        if (newStudent) {
+          this.addStudent.emit(newStudent);
+        }
+      },
+      () => {}
+    );
   }
 }
