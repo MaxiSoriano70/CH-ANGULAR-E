@@ -33,6 +33,7 @@ import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
 export class StudentsTableComponent implements OnChanges, AfterViewInit {
   @Input() students: Student[] = [];
   @Output() editStudent = new EventEmitter<Student>();
+  @Output() deleteStudent = new EventEmitter<Student>();
 
   displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
   dataSource = new MatTableDataSource<Student>();
@@ -48,6 +49,10 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
 
   onEdit(student: Student): void {
     this.editStudent.emit(student);
+  }
+
+  onDelete(student: Student): void {
+    this.deleteStudent.emit(student);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
