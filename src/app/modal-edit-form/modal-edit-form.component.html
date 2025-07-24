@@ -1,0 +1,103 @@
+<div class="modal-header bg-color-principal">
+    <h5 class="modal-title text-white">Editar Estudiante</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body bg-color-fondo">
+    <form id="form-registro" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <!-- NOMBRE -->
+        <div class="mb-3">
+            <label for="nombreEditar" class="form-label fw-bolder">Nombre:</label>
+            <input
+            formControlName="name"
+            type="text"
+            class="form-control bg-input"
+            id="nombreEditar"
+            placeholder="Ingrese su nombre..."
+            />
+            <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="text-danger">
+            <small *ngIf="studentForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+            <small *ngIf="studentForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+            <small *ngIf="studentForm.get('name')?.errors?.['pattern']">Solo se permiten letras y espacios.</small>
+            </div>
+        </div>
+
+        <!-- APELLIDO -->
+        <div class="mb-3">
+            <label for="apellidoEditar" class="form-label fw-bolder">Apellido:</label>
+            <input
+            formControlName="surname"
+            type="text"
+            class="form-control bg-input"
+            id="apellidoEditar"
+            placeholder="Ingrese apellido..."
+            />
+            <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched" class="text-danger">
+            <small *ngIf="studentForm.get('surname')?.errors?.['required']">El apellido es obligatorio.</small>
+            <small *ngIf="studentForm.get('surname')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+            <small *ngIf="studentForm.get('surname')?.errors?.['pattern']">Solo se permiten letras y espacios.</small>
+            </div>
+        </div>
+
+        <!-- EDAD -->
+        <div class="mb-3">
+            <label for="edadEditar" class="form-label fw-bolder">Edad:</label>
+            <input
+            formControlName="age"
+            type="number"
+            class="form-control bg-input"
+            id="edadEditar"
+            placeholder="Ingresa tu edad"
+            />
+            <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="text-danger">
+            <small *ngIf="studentForm.get('age')?.errors?.['required']">La edad es obligatoria.</small>
+            <small *ngIf="studentForm.get('age')?.errors?.['min']">Debe ser mayor o igual a 1.</small>
+            <small *ngIf="studentForm.get('age')?.errors?.['max']">Debe ser menor o igual a 120.</small>
+            </div>
+        </div>
+
+        <!-- DNI -->
+        <div class="mb-3">
+            <label for="dniEditar" class="form-label fw-bolder">DNI:</label>
+            <input
+            formControlName="dni"
+            type="number"
+            class="form-control bg-input"
+            id="dniEditar"
+            placeholder="Ingresa tu DNI"
+            />
+            <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" class="text-danger">
+            <small *ngIf="studentForm.get('dni')?.errors?.['required']">El DNI es obligatorio.</small>
+            <small *ngIf="studentForm.get('dni')?.errors?.['min']">Debe ser mayor a 1.000.000.</small>
+            <small *ngIf="studentForm.get('dni')?.errors?.['max']">Debe ser menor a 99.999.999.</small>
+            </div>
+        </div>
+
+        <!-- PROMEDIO -->
+        <div class="mb-3">
+            <label for="promedioEditar" class="form-label fw-bolder">Promedio:</label>
+            <input
+            formControlName="average"
+            type="number"
+            class="form-control bg-input"
+            id="promedioEditar"
+            placeholder="Ingresa tu promedio"
+            step="0.01"
+            />
+            <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched" class="text-danger">
+            <small *ngIf="studentForm.get('average')?.errors?.['required']">El promedio es obligatorio.</small>
+            <small *ngIf="studentForm.get('average')?.errors?.['min']">Debe ser mayor o igual a 1.</small>
+            <small *ngIf="studentForm.get('average')?.errors?.['max']">Debe ser menor o igual a 10.</small>
+            </div>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" id="botonRegistrarse" class="btn btn-personalized-2 mx-1 fw-bold" aria-label="Agregar">
+            Guardar Cambios
+            </button>
+            <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold" (click)="close()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

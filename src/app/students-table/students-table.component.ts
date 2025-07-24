@@ -4,7 +4,9 @@ import {
   OnChanges,
   SimpleChanges,
   ViewChild,
-  AfterViewInit
+  AfterViewInit,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { Student } from '../../shared/emtities';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -30,28 +32,27 @@ import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
 })
 export class StudentsTableComponent implements OnChanges, AfterViewInit {
   @Input() students: Student[] = [];
+  @Output() editStudent = new EventEmitter<Student>();
 
-  displayedColumns: string[] = ['fullname', 'age', 'dni', 'average'];
+  displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
   dataSource = new MatTableDataSource<Student>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit(): void {
-    // Aquí asignamos paginator y sort después de que existan
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-    // Inicializamos los datos para el primer render
     this.dataSource.data = this.students;
+  }
+
+  onEdit(student: Student): void {
+    this.editStudent.emit(student);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['students'] && !changes['students'].firstChange) {
-      // Actualizamos los datos cuando cambian, pero NO la primera vez (para no sobrescribir antes de tener paginator y sort)
       this.dataSource.data = this.students;
-
-      // Volvemos a la primera página para que se refresque bien la tabla
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }

@@ -3,7 +3,10 @@
     <main class="mainPrincipal">
         <app-nuestros-sponsors></app-nuestros-sponsors>
         <app-toolbar (addStudent)="onStudentAdded($event)"></app-toolbar>
-        <app-students-table [students]="students"></app-students-table>
+        <app-students-table
+        [students]="students"
+        (editStudent)="openEditModal($event)">
+        </app-students-table>
         {{students | json}}
     </main>
     <app-footer></app-footer>
