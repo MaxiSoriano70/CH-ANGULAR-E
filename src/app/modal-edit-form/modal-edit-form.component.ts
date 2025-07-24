@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Student } from '../../shared/emtities';
 import { CommonModule } from '@angular/common';
+declare const swal: any;
 
 @Component({
   selector: 'app-modal-edit-form',
@@ -11,7 +12,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './modal-edit-form.component.html',
   styleUrl: './modal-edit-form.component.css'
 })
-
 export class ModalEditFormComponent implements OnInit {
   @Input() student!: Student;
   studentForm!: FormGroup;
@@ -30,7 +30,28 @@ export class ModalEditFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.studentForm.valid) {
-      this.activeModal.close(this.studentForm.value as Student);
+      swal({
+        title: '¿Guardar cambios?',
+        text: 'Confirmar cambios del estudiante.',
+        icon: 'warning',
+        buttons: {
+          cancel: 'Cancelar',
+          confirm: {
+            text: 'Sí, guardar',
+            value: true,
+          }
+        },
+        dangerMode: true
+      }).then((willSave: boolean) => {
+        if (willSave) {
+          try {
+            this.activeModal.close(this.studentForm.value as Student);
+            swal('¡Éxito!', 'Los cambios fueron guardados correctamente.', 'success');
+          } catch (error) {
+            swal('Error', 'Ocurrió un error al guardar los cambios.', 'error');
+          }
+        }
+      });
     } else {
       this.studentForm.markAllAsTouched();
     }
