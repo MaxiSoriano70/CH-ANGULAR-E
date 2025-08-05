@@ -10,7 +10,7 @@ export class AlumnosAPIService {
   baseUrl = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
-
+  /* El OBSERVABLE SON DATOS QUE ESTAB EN CAMINO*/
   getAlumnos(): Observable<Student[]>{
     return this.http.get<Student[]>(`${this.baseUrl}/students`);
   }

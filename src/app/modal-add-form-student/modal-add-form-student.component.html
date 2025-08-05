@@ -1,5 +1,5 @@
 <div class="modal-header bg-color-principal">
-    <h5 class="modal-title text-white">Editar Estudiante</h5>
+    <h5 class="modal-title text-white">Agregar Estudiante</h5>
     <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="close()"></button>
 </div>
 
@@ -7,12 +7,12 @@
     <form id="form-registro" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
         <!-- NOMBRE -->
         <div class="mb-3">
-            <label for="nombreEditar" class="form-label fw-bolder">Nombre:</label>
+            <label for="nombreRegistro" class="form-label fw-bolder">Nombre:</label>
             <input
             formControlName="name"
             type="text"
             class="form-control bg-input"
-            id="nombreEditar"
+            id="nombreRegistro"
             placeholder="Ingrese su nombre..."
             />
             <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="text-danger">
@@ -24,12 +24,12 @@
 
         <!-- APELLIDO -->
         <div class="mb-3">
-            <label for="apellidoEditar" class="form-label fw-bolder">Apellido:</label>
+            <label for="apellidoRegistro" class="form-label fw-bolder">Apellido:</label>
             <input
             formControlName="surname"
             type="text"
             class="form-control bg-input"
-            id="apellidoEditar"
+            id="apellidoRegistro"
             placeholder="Ingrese apellido..."
             />
             <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched" class="text-danger">
@@ -41,12 +41,12 @@
 
         <!-- EDAD -->
         <div class="mb-3">
-            <label for="edadEditar" class="form-label fw-bolder">Edad:</label>
+            <label for="edadRegistro" class="form-label fw-bolder">Edad:</label>
             <input
             formControlName="age"
             type="number"
             class="form-control bg-input"
-            id="edadEditar"
+            id="edadRegistro"
             placeholder="Ingresa tu edad"
             />
             <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="text-danger">
@@ -58,12 +58,12 @@
 
         <!-- DNI -->
         <div class="mb-3">
-            <label for="dniEditar" class="form-label fw-bolder">DNI:</label>
+            <label for="dniRegistro" class="form-label fw-bolder">DNI:</label>
             <input
             formControlName="dni"
             type="number"
             class="form-control bg-input"
-            id="dniEditar"
+            id="dniRegistro"
             placeholder="Ingresa tu DNI"
             />
             <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" class="text-danger">
@@ -75,12 +75,12 @@
 
         <!-- PROMEDIO -->
         <div class="mb-3">
-            <label for="promedioEditar" class="form-label fw-bolder">Promedio:</label>
+            <label for="promedioRegistro" class="form-label fw-bolder">Promedio:</label>
             <input
             formControlName="average"
             type="number"
             class="form-control bg-input"
-            id="promedioEditar"
+            id="promedioRegistro"
             placeholder="Ingresa tu promedio"
             step="0.01"
             />
@@ -94,7 +94,7 @@
         <!-- BOTONES -->
         <div class="d-flex align-items-center justify-content-center">
             <button type="submit" id="botonRegistrarse" class="btn btn-personalized-2 mx-1 fw-bold" aria-label="Agregar">
-            Guardar Cambios
+            Agregar
             </button>
             <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold" (click)="close()">Cancelar</button>
         </div>

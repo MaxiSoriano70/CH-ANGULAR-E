@@ -1,4 +1,46 @@
 {
+    "courses": [
+        {
+            "name": "Cuidado Básico de Mascotas",
+            "code": "CBM101",
+            "credits": 4
+        },
+        {
+            "name": "Peluquería Canina y Felina",
+            "code": "PCF201",
+            "credits": 5
+        },
+        {
+            "name": "Adiestramiento de Perros",
+            "code": "AP301",
+            "credits": 6
+        },
+        {
+            "name": "Primeros Auxilios para Mascotas",
+            "code": "PAM102",
+            "credits": 3
+        },
+        {
+            "name": "Nutrición Animal",
+            "code": "NA202",
+            "credits": 4
+        },
+        {
+            "name": "Psicología Animal",
+            "code": "PA303",
+            "credits": 5
+        },
+        {
+            "name": "Cuidados en Mascotas Exóticas",
+            "code": "CME304",
+            "credits": 4
+        },
+        {
+            "name": "Terapias y Bienestar Animal",
+            "code": "TBA305",
+            "credits": 3
+        }
+    ],
     "students": [
         {
             "name": "Lucas",

@@ -5,13 +5,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Student } from '../../shared/emtities';
 
 @Component({
-  selector: 'app-modal-add-form',
-  standalone: true,
+  selector: 'app-modal-add-form-student',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './modal-add-form.component.html',
-  styleUrl: './modal-add-form.component.css'
+  templateUrl: './modal-add-form-student.component.html',
+  styleUrl: './modal-add-form-student.component.css'
 })
-export class ModalAddFormComponent implements OnInit{
+export class ModalAddFormStudentComponent implements OnInit{
   studentForm!: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {}

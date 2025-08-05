@@ -1,22 +1,24 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalAddFormComponent } from '../modal-add-form/modal-add-form.component';
 import { Student } from '../../shared/emtities';
+import { ModalAddFormStudentComponent } from '../modal-add-form-student/modal-add-form-student.component';
 declare const swal: any;
 
+
 @Component({
-  selector: 'app-toolbar',
-  standalone: true,
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-toolbar-student',
+  imports: [],
+  templateUrl: './toolbar-student.component.html',
+  styleUrl: './toolbar-student.component.css'
 })
-export class ToolbarComponent {
+
+export class ToolbarStudentComponent {
   @Output() addStudent = new EventEmitter<Student>();
 
   constructor(private modalService: NgbModal) {}
 
   abrirModal() {
-    const modalRef = this.modalService.open(ModalAddFormComponent, { centered: true });
+    const modalRef = this.modalService.open(ModalAddFormStudentComponent, { centered: true });
 
     modalRef.result.then(
       (newStudent: Student) => {
