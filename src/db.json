@@ -1,0 +1,88 @@
+{
+    "students": [
+        {
+            "name": "Lucas",
+            "surname": "Fernandez",
+            "age": 20,
+            "dni": 40123456,
+            "average": 8.5
+        },
+        {
+            "name": "María",
+            "surname": "Gonzalez",
+            "age": 22,
+            "dni": 39123456,
+            "average": 9.2
+        },
+        {
+            "name": "Javier",
+            "surname": "Martinez",
+            "age": 19,
+            "dni": 42123456,
+            "average": 7.8
+        },
+        {
+            "name": "Carla",
+            "surname": "Lopez",
+            "age": 21,
+            "dni": 40198765,
+            "average": 8.9
+        },
+        {
+            "name": "Sofia",
+            "surname": "Diaz",
+            "age": 23,
+            "dni": 38123456,
+            "average": 9.5
+        },
+        {
+            "name": "Celeste",
+            "surname": "Severich",
+            "age": 28,
+            "dni": 3884211,
+            "average": 8.9
+        },
+        {
+            "name": "Karen",
+            "surname": "Dominguez",
+            "age": 30,
+            "dni": 38555444,
+            "average": 9.8
+        },
+        {
+            "name": "Matías",
+            "surname": "Rojas",
+            "age": 24,
+            "dni": 40112233,
+            "average": 8.7
+        },
+        {
+            "name": "Valentina",
+            "surname": "Mendez",
+            "age": 20,
+            "dni": 39222444,
+            "average": 9.1
+        },
+        {
+            "name": "Bruno",
+            "surname": "Castro",
+            "age": 21,
+            "dni": 40233445,
+            "average": 7.9
+        },
+        {
+            "name": "Julieta",
+            "surname": "Sosa",
+            "age": 22,
+            "dni": 39444555,
+            "average": 8.6
+        },
+        {
+            "name": "Agustín",
+            "surname": "Ramirez",
+            "age": 25,
+            "dni": 39333666,
+            "average": 9.3
+        }
+    ]
+}
