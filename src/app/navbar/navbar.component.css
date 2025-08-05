@@ -135,10 +135,12 @@ header .contenedor{
 }
 
 .contenedor .menu ul li.dropdown .submenu a{
-    padding: 6px 24px;
+    padding: 10px 24px;
 }
 
 .contenedor .menu ul li.dropdown .submenu span{
+    display: block;
+    margin-top: 7.5px;
     background-image: linear-gradient(hsl(0, 0%, 100%), hsl(0, 0%, 100%));
     background-size: 0 1px;
     background-repeat: no-repeat;
