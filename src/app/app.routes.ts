@@ -1,20 +1,20 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { RoutePaths } from '../shared/routes';
-import { AlumnosComponent } from './features/alumnos/alumnos.component';
-import { CursosComponent } from './features/cursos/cursos.component';
 
 export const routes: Routes = [
     {
         path: RoutePaths.HOME,
-        component: HomeComponent
-    },
-    {
-        path: RoutePaths.ALUMNOS,
-        component: AlumnosComponent
+        loadComponent: () =>
+        import('./features/alumnos/alumnos.component').then(m => m.AlumnosComponent)
     },
     {
         path: RoutePaths.CURSOS,
-        component: CursosComponent
+        loadComponent: () =>
+        import('./features/cursos/cursos.component').then(m => m.CursosComponent)
+    },
+    {
+        path: RoutePaths.INSCRIPCIONES,
+        loadComponent: () =>
+        import('./features/inscripciones/inscripciones.component').then(m => m.InscripcionesComponent)
     }
 ];
