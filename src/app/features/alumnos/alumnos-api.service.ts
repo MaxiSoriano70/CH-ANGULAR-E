@@ -9,10 +9,21 @@ import { HttpClient } from '@angular/common/http';
 
 export class AlumnosAPIService {
   baseUrl = "http://localhost:3000";
+
+  constructor(private http: HttpClient) { }
+
   // El OBSERVABLE SON DATOS QUE ESTAN EN CAMINO
   getAlumnos(): Observable<Student[]> {
     return this.http.get<Student[]>(`${this.baseUrl}/students`).pipe(delay(1000));
   }
-  constructor(private http: HttpClient) { }
+
+  updateAlumno(student: Student): Observable<Student> {
+    return this.http.put<Student>(`${this.baseUrl}/students/${student.id}`, student);
+  }
+
+
+  deleteAlumno(student : Student): Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}/students/${student.id}`).pipe(delay(1000));
+  }
 }
 

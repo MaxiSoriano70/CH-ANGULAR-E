@@ -1,130 +1,126 @@
 {
-    "courses": [
-        {
-            "name": "Cuidado Básico de Mascotas",
-            "code": "CBM101",
-            "credits": 4
-        },
-        {
-            "name": "Peluquería Canina y Felina",
-            "code": "PCF201",
-            "credits": 5
-        },
-        {
-            "name": "Adiestramiento de Perros",
-            "code": "AP301",
-            "credits": 6
-        },
-        {
-            "name": "Primeros Auxilios para Mascotas",
-            "code": "PAM102",
-            "credits": 3
-        },
-        {
-            "name": "Nutrición Animal",
-            "code": "NA202",
-            "credits": 4
-        },
-        {
-            "name": "Psicología Animal",
-            "code": "PA303",
-            "credits": 5
-        },
-        {
-            "name": "Cuidados en Mascotas Exóticas",
-            "code": "CME304",
-            "credits": 4
-        },
-        {
-            "name": "Terapias y Bienestar Animal",
-            "code": "TBA305",
-            "credits": 3
-        }
-    ],
-    "students": [
-        {
-            "name": "Lucas",
-            "surname": "Fernandez",
-            "age": 20,
-            "dni": 40123456,
-            "average": 8.5
-        },
-        {
-            "name": "María",
-            "surname": "Gonzalez",
-            "age": 22,
-            "dni": 39123456,
-            "average": 9.2
-        },
-        {
-            "name": "Javier",
-            "surname": "Martinez",
-            "age": 19,
-            "dni": 42123456,
-            "average": 7.8
-        },
-        {
-            "name": "Carla",
-            "surname": "Lopez",
-            "age": 21,
-            "dni": 40198765,
-            "average": 8.9
-        },
-        {
-            "name": "Sofia",
-            "surname": "Diaz",
-            "age": 23,
-            "dni": 38123456,
-            "average": 9.5
-        },
-        {
-            "name": "Celeste",
-            "surname": "Severich",
-            "age": 28,
-            "dni": 3884211,
-            "average": 8.9
-        },
-        {
-            "name": "Karen",
-            "surname": "Dominguez",
-            "age": 30,
-            "dni": 38555444,
-            "average": 9.8
-        },
-        {
-            "name": "Matías",
-            "surname": "Rojas",
-            "age": 24,
-            "dni": 40112233,
-            "average": 8.7
-        },
-        {
-            "name": "Valentina",
-            "surname": "Mendez",
-            "age": 20,
-            "dni": 39222444,
-            "average": 9.1
-        },
-        {
-            "name": "Bruno",
-            "surname": "Castro",
-            "age": 21,
-            "dni": 40233445,
-            "average": 7.9
-        },
-        {
-            "name": "Julieta",
-            "surname": "Sosa",
-            "age": 22,
-            "dni": 39444555,
-            "average": 8.6
-        },
-        {
-            "name": "Agustín",
-            "surname": "Ramirez",
-            "age": 25,
-            "dni": 39333666,
-            "average": 9.3
-        }
-    ]
+  "courses": [
+    {
+      "id": "1",
+      "name": "Cuidado Básico de Mascotas",
+      "code": "CBM101",
+      "credits": 4
+    },
+    {
+      "id": "2",
+      "name": "Peluquería Canina y Felina",
+      "code": "PCF201",
+      "credits": 5
+    },
+    {
+      "id": "3",
+      "name": "Adiestramiento de Perros",
+      "code": "AP301",
+      "credits": 6
+    },
+    {
+      "id": "4",
+      "name": "Primeros Auxilios para Mascotas",
+      "code": "PAM102",
+      "credits": 3
+    },
+    {
+      "id": "5",
+      "name": "Nutrición Animal",
+      "code": "NA202",
+      "credits": 4
+    },
+    {
+      "id": "6",
+      "name": "Psicología Animal",
+      "code": "PA303",
+      "credits": 5
+    },
+    {
+      "id": "7",
+      "name": "Cuidados en Mascotas Exóticas",
+      "code": "CME304",
+      "credits": 4
+    },
+    {
+      "id": "8",
+      "name": "Terapias y Bienestar Animal",
+      "code": "TBA305",
+      "credits": 3
+    }
+  ],
+  "students": [
+    {
+      "id": "4",
+      "name": "Carla",
+      "surname": "Guitian",
+      "age": 21,
+      "dni": 40198765,
+      "average": 8.9
+    },
+    {
+      "id": "5",
+      "name": "Sofia",
+      "surname": "Diaz",
+      "age": 23,
+      "dni": 38123456,
+      "average": 9.5
+    },
+    {
+      "id": "6",
+      "name": "Celeste",
+      "surname": "Severich",
+      "age": 28,
+      "dni": 3884211,
+      "average": 8.9
+    },
+    {
+      "id": "7",
+      "name": "Karen",
+      "surname": "Dominguez",
+      "age": 30,
+      "dni": 38555444,
+      "average": 9.8
+    },
+    {
+      "id": "8",
+      "name": "Matías",
+      "surname": "Rojas",
+      "age": 24,
+      "dni": 40112233,
+      "average": 8.7
+    },
+    {
+      "id": "9",
+      "name": "Valentina",
+      "surname": "Mendez",
+      "age": 20,
+      "dni": 39222444,
+      "average": 9.1
+    },
+    {
+      "id": "10",
+      "name": "Bruno",
+      "surname": "Castro",
+      "age": 21,
+      "dni": 40233445,
+      "average": 7.9
+    },
+    {
+      "id": "11",
+      "name": "Julieta",
+      "surname": "Sosa",
+      "age": 22,
+      "dni": 39444555,
+      "average": 8.6
+    },
+    {
+      "id": "12",
+      "name": "Agustín",
+      "surname": "Ramirez",
+      "age": 25,
+      "dni": 39333666,
+      "average": 9.3
+    }
+  ]
 }

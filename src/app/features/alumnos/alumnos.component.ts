@@ -41,9 +41,16 @@ export class AlumnosComponent implements OnInit{
 
     modalRef.result.then((updatedStudent: Student) => {
       if (updatedStudent) {
-        this.students = this.students.map(s =>
-          s.dni === updatedStudent.dni ? updatedStudent : s
-        );
+        this.alumnosApi.updateAlumno(updatedStudent).subscribe({
+          next: () => {
+            this.students = this.students.map(s =>
+              s.id === updatedStudent.id ? updatedStudent : s
+            );
+          },
+          error: () => {
+            swal('Error', 'Ocurrió un error al actualizar el estudiante.', 'error');
+          }
+        });
       }
     }).catch(() => {});
   }
@@ -64,8 +71,10 @@ export class AlumnosComponent implements OnInit{
     }).then((willDelete: boolean) => {
       if (willDelete) {
         try {
-          this.students = this.students.filter(s => s.dni !== student.dni);
-          swal('¡Eliminado!', 'El estudiante fue eliminado correctamente.', 'success');
+          this.alumnosApi.deleteAlumno(student).subscribe(() => {
+            this.students = this.students.filter(s => s.id !== student.id);
+            swal('¡Eliminado!', 'El estudiante fue eliminado correctamente.', 'success');
+          });
         } catch (error) {
           swal('Error', 'Ocurrió un error al eliminar el estudiante.', 'error');
         }

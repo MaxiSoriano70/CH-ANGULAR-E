@@ -1,4 +1,5 @@
 export interface Student{
+    id: number,
     name: string;
     surname: string;
     age: number;
@@ -7,6 +8,7 @@ export interface Student{
 }
 
 export interface Course{
+    id: Number,
     name: String,
     code: String,
     credits: number
