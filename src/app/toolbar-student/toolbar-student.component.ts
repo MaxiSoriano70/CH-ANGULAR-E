@@ -4,7 +4,6 @@ import { Student } from '../../shared/emtities';
 import { ModalAddFormStudentComponent } from '../modal-add-form-student/modal-add-form-student.component';
 declare const swal: any;
 
-
 @Component({
   selector: 'app-toolbar-student',
   imports: [],

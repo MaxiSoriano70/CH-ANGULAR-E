@@ -11,7 +11,7 @@ declare const swal: any;
 
 @Component({
   selector: 'app-alumnos',
-  imports: [CommonModule, NuestrosSponsorsComponent, StudentsTableComponent, ToolbarStudentComponent],
+  imports: [CommonModule, NuestrosSponsorsComponent, ToolbarStudentComponent, StudentsTableComponent],
   templateUrl: './alumnos.component.html',
   styleUrl: './alumnos.component.css'
 })

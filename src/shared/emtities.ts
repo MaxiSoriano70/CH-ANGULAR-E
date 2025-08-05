@@ -5,3 +5,9 @@ export interface Student{
     dni: number;
     average: number;
 }
+
+export interface Course{
+    name: String,
+    code: String,
+    credits: number
+}

@@ -1,1 +1,7 @@
-<p>cursos works!</p>
+<app-nuestros-sponsors></app-nuestros-sponsors>
+<app-toolbar-course (addStudent)="onCourseAdded($event)"></app-toolbar-course>
+<app-courses-table
+[courses]="courses"
+(editCourse)="openEditModal($event)"
+(deleteCourse)="onCourseDeleted($event)">
+</app-courses-table>
