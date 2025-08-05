@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlumnosAPIService } from './alumnos-api.service';
 import { ToolbarStudentComponent } from "../../toolbar-student/toolbar-student.component";
 import { ModalEditFormStudentComponent } from '../../modal-edit-form-student/modal-edit-form-student.component';
+import { Observable } from 'rxjs';
 declare const swal: any;
 
 @Component({
@@ -16,7 +17,9 @@ declare const swal: any;
   styleUrl: './alumnos.component.css'
 })
 export class AlumnosComponent implements OnInit{
-  students: Student[] = [];
+  students!: Student[];
+  /* DUDA PIPE ASYNC */
+  students$!: Observable<Student[]>;
 
   constructor(private alumnosApi: AlumnosAPIService, private modalService: NgbModal) {}
   /* SUBSCRIBE NOTIFICA QUE YA LLEGO */
@@ -24,6 +27,7 @@ export class AlumnosComponent implements OnInit{
     this.alumnosApi.getAlumnos().subscribe(data => {
       this.students = data;
     });
+    this.students$ = this.alumnosApi.getAlumnos();
   }
 
   onStudentAdded(student: Student) {
