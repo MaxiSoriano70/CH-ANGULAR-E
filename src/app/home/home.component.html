@@ -1,0 +1,8 @@
+<app-nuestros-sponsors></app-nuestros-sponsors>
+<app-toolbar (addStudent)="onStudentAdded($event)"></app-toolbar>
+<app-students-table
+[students]="students"
+(editStudent)="openEditModal($event)"
+(deleteStudent)="onStudentDeleted($event)">
+</app-students-table>
+{{students | json}}
