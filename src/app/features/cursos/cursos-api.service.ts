@@ -11,8 +11,12 @@ export class CursosAPIService {
 
   constructor(private http: HttpClient) { }
   /* El OBSERVABLE SON DATOS QUE ESTAB EN CAMINO*/
+  addCurso(course: Omit<Course, 'id'>): Observable<Course> {
+    return this.http.post<Course>(`${this.baseUrl}/courses`, course).pipe(delay(1000));
+  }
+
   getCursos(): Observable<Course[]>{
-    return this.http.get<Course[]>(`${this.baseUrl}/courses`);
+    return this.http.get<Course[]>(`${this.baseUrl}/courses`).pipe(delay(1000));
   }
 
   updateCurso(course: Course): Observable<Course> {

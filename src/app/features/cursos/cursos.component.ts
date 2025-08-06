@@ -31,8 +31,15 @@ export class CursosComponent implements OnInit{
   }
 
   onCourseAdded(course: Course) {
-    console.log('Recibido en AppComponent:', course);
-    this.loadCourses();
+    this.cursosApi.addCurso(course).pipe(
+      switchMap(() => {
+        this.loadCourses();
+        return of (null);
+      })
+    ).subscribe({
+      next: () => swal('Éxito', 'Curso agregado correctamente.', 'success'),
+      error: () => swal('Error', 'No se pudo agregar el curso.', 'error')
+    });
   }
 
   openEditModal(course: Course): void {

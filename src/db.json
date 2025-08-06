@@ -47,6 +47,12 @@
       "name": "Terapias y Bienestar Animal",
       "code": "TBA305",
       "credits": 3
+    },
+    {
+      "id": "df3e",
+      "name": "Paseo de perros y gatos",
+      "code": "PASE10",
+      "credits": 5
     }
   ],
   "students": [

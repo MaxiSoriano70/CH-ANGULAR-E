@@ -13,6 +13,10 @@ export class AlumnosAPIService {
   constructor(private http: HttpClient) { }
 
   // El OBSERVABLE SON DATOS QUE ESTAN EN CAMINO
+  addAlumno(student: Omit<Student, 'id'>): Observable<Student> {
+    return this.http.post<Student>(`${this.baseUrl}/students`, student).pipe(delay(1000));
+  }
+
   getAlumnos(): Observable<Student[]> {
     return this.http.get<Student[]>(`${this.baseUrl}/students`).pipe(delay(1000));
   }

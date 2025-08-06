@@ -32,8 +32,15 @@ export class AlumnosComponent implements OnInit{
   }
 
   onStudentAdded(student: Student) {
-    console.log('Recibido en AppComponent:', student);
-    this.loadStudents();
+    this.alumnosApi.addAlumno(student).pipe(
+      switchMap(() => {
+        this.loadStudents();
+        return of (null);
+      })
+    ).subscribe({
+      next: () => swal('Éxito', 'Estudiante agregado correctamente.', 'success'),
+      error: () => swal('Error', 'No se pudo agregar el estudiante.', 'error')
+    });
   }
 
   openEditModal(student: Student): void {
