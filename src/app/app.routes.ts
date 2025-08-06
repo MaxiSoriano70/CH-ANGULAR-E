@@ -21,5 +21,14 @@ export const routes: Routes = [
         path: RoutePaths.ALUMNODETALLE,
         loadComponent: () =>
         import('./features/alumnos/view-student/view-student.component').then(m => m.ViewStudentComponent)
+    },
+    {
+    path: RoutePaths.ERROR404,
+    loadComponent: () =>
+        import('./features/error404/error404.component').then(m => m.Error404Component)
+    },
+    {
+        path: '**',
+        redirectTo: RoutePaths.ERROR404
     }
 ];
