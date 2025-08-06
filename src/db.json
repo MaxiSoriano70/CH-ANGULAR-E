@@ -51,20 +51,12 @@
   ],
   "students": [
     {
-      "id": "4",
-      "name": "Carla",
-      "surname": "Guitian",
-      "age": 21,
-      "dni": 40198765,
-      "average": 8.9
-    },
-    {
       "id": "5",
       "name": "Sofia",
       "surname": "Diaz",
       "age": 23,
       "dni": 38123456,
-      "average": 9.5
+      "average": 9.1
     },
     {
       "id": "6",

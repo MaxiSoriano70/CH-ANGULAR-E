@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlumnosAPIService } from './alumnos-api.service';
 import { ToolbarStudentComponent } from "../../toolbar-student/toolbar-student.component";
 import { ModalEditFormStudentComponent } from '../../modal-edit-form-student/modal-edit-form-student.component';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 declare const swal: any;
 
 @Component({
@@ -17,22 +17,22 @@ declare const swal: any;
   styleUrl: './alumnos.component.css'
 })
 export class AlumnosComponent implements OnInit{
-  students!: Student[];
   /* DUDA PIPE ASYNC */
   students$!: Observable<Student[]>;
 
   constructor(private alumnosApi: AlumnosAPIService, private modalService: NgbModal) {}
   /* SUBSCRIBE NOTIFICA QUE YA LLEGO */
   ngOnInit(): void {
-    this.alumnosApi.getAlumnos().subscribe(data => {
-      this.students = data;
-    });
+    this.students$ = this.alumnosApi.getAlumnos();
+  }
+
+  private loadStudents() {
     this.students$ = this.alumnosApi.getAlumnos();
   }
 
   onStudentAdded(student: Student) {
     console.log('Recibido en AppComponent:', student);
-    this.students = [...this.students, student];
+    this.loadStudents();
   }
 
   openEditModal(student: Student): void {
@@ -41,19 +41,19 @@ export class AlumnosComponent implements OnInit{
 
     modalRef.result.then((updatedStudent: Student) => {
       if (updatedStudent) {
-        this.alumnosApi.updateAlumno(updatedStudent).subscribe({
-          next: () => {
-            this.students = this.students.map(s =>
-              s.id === updatedStudent.id ? updatedStudent : s
-            );
-          },
-          error: () => {
-            swal('Error', 'Ocurrió un error al actualizar el estudiante.', 'error');
-          }
-        });
-      }
-    }).catch(() => {});
+          this.alumnosApi.updateAlumno(updatedStudent).pipe(
+            switchMap(() => {
+              this.loadStudents();
+              return of(null);
+            })
+          ).subscribe({
+            next: () => swal('Éxito', 'Datos actualizados correctamente.', 'success'),
+            error: () => swal('Error', 'Ocurrió un error al actualizar el estudiante.', 'error')
+          });
+        }
+      }).catch(() => {});
   }
+
 
   onStudentDeleted(student: Student): void {
     swal({
@@ -70,14 +70,15 @@ export class AlumnosComponent implements OnInit{
       dangerMode: true
     }).then((willDelete: boolean) => {
       if (willDelete) {
-        try {
-          this.alumnosApi.deleteAlumno(student).subscribe(() => {
-            this.students = this.students.filter(s => s.id !== student.id);
-            swal('¡Eliminado!', 'El estudiante fue eliminado correctamente.', 'success');
-          });
-        } catch (error) {
-          swal('Error', 'Ocurrió un error al eliminar el estudiante.', 'error');
-        }
+        this.alumnosApi.deleteAlumno(student).pipe(
+          switchMap(() => {
+            this.loadStudents();
+            return of(null);
+          })
+        ).subscribe({
+          next: () => swal('¡Eliminado!', 'El estudiante fue eliminado correctamente.', 'success'),
+          error: () => swal('Error', 'Ocurrió un error al eliminar el estudiante.', 'error')
+        });
       }
     });
   }

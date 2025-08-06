@@ -18,7 +18,7 @@ export class AlumnosAPIService {
   }
 
   updateAlumno(student: Student): Observable<Student> {
-    return this.http.put<Student>(`${this.baseUrl}/students/${student.id}`, student);
+    return this.http.put<Student>(`${this.baseUrl}/students/${student.id}`, student).pipe(delay(1000));
   }
 
 
