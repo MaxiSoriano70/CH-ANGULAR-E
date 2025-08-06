@@ -1,18 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Student } from '../../shared/emtities';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 declare const swal: any;
 
 @Component({
-  selector: 'app-modal-edit-form',
-  standalone: true,
+  selector: 'app-modal-edit-form-student',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './modal-edit-form.component.html',
-  styleUrl: './modal-edit-form.component.css'
+  templateUrl: './modal-edit-form-student.component.html',
+  styleUrl: './modal-edit-form-student.component.css'
 })
-export class ModalEditFormComponent implements OnInit {
+export class ModalEditFormStudentComponent implements OnInit{
   @Input() student!: Student;
   studentForm!: FormGroup;
 
@@ -20,6 +19,7 @@ export class ModalEditFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentForm = this.fb.group({
+      id: [this.student.id],
       name: [this.student.name, [Validators.required]],
       surname: [this.student.surname, [Validators.required]],
       age: [this.student.age, [Validators.required, Validators.min(1), Validators.max(120)]],

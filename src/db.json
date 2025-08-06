@@ -1,0 +1,124 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "Cuidado Básico de Mascotas",
+      "code": "CBM101",
+      "credits": 6
+    },
+    {
+      "id": "2",
+      "name": "Peluquería Canina y Felina",
+      "code": "PCF201",
+      "credits": 5
+    },
+    {
+      "id": "3",
+      "name": "Adiestramiento de Perros",
+      "code": "AP301",
+      "credits": 6
+    },
+    {
+      "id": "4",
+      "name": "Primeros Auxilios para Mascotas",
+      "code": "PAM102",
+      "credits": 3
+    },
+    {
+      "id": "5",
+      "name": "Nutrición Animal",
+      "code": "NA202",
+      "credits": 4
+    },
+    {
+      "id": "6",
+      "name": "Psicología Animal",
+      "code": "PA303",
+      "credits": 5
+    },
+    {
+      "id": "7",
+      "name": "Cuidados en Mascotas Exóticas",
+      "code": "CME304",
+      "credits": 4
+    },
+    {
+      "id": "8",
+      "name": "Terapias y Bienestar Animal",
+      "code": "TBA305",
+      "credits": 3
+    },
+    {
+      "id": "df3e",
+      "name": "Paseo de perros y gatos",
+      "code": "PASE10",
+      "credits": 5
+    }
+  ],
+  "students": [
+    {
+      "id": "5",
+      "name": "Sofia",
+      "surname": "Diaz",
+      "age": 23,
+      "dni": 38123456,
+      "average": 9.1
+    },
+    {
+      "id": "6",
+      "name": "Celeste",
+      "surname": "Severich",
+      "age": 28,
+      "dni": 3884211,
+      "average": 8.9
+    },
+    {
+      "id": "7",
+      "name": "Karen",
+      "surname": "Dominguez",
+      "age": 30,
+      "dni": 38555444,
+      "average": 9.8
+    },
+    {
+      "id": "8",
+      "name": "Matías",
+      "surname": "Rojas",
+      "age": 24,
+      "dni": 40112233,
+      "average": 8.7
+    },
+    {
+      "id": "9",
+      "name": "Valentina",
+      "surname": "Mendez",
+      "age": 20,
+      "dni": 39222444,
+      "average": 9.1
+    },
+    {
+      "id": "10",
+      "name": "Bruno",
+      "surname": "Castro",
+      "age": 21,
+      "dni": 40233445,
+      "average": 7.9
+    },
+    {
+      "id": "11",
+      "name": "Julieta",
+      "surname": "Sosa",
+      "age": 22,
+      "dni": 39444555,
+      "average": 8.6
+    },
+    {
+      "id": "12",
+      "name": "Agustín",
+      "surname": "Ramirez",
+      "age": 25,
+      "dni": 39333666,
+      "average": 9.3
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<div class="modal-header bg-color-principal">
+    <h5 class="modal-title text-white">Editar Curso</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body bg-color-fondo">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <!-- NAME -->
+        <div class="mb-3">
+            <label for="courseNameEdit" class="form-label fw-bolder">Nombre del Curso:</label>
+            <input formControlName="name" type="text" class="form-control bg-input" id="courseNameEdit"
+                placeholder="Ej: Peluquería Canina" />
+            <div *ngIf="courseForm.get('name')?.invalid && courseForm.get('name')?.touched" class="text-danger">
+                <small *ngIf="courseForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+                <small *ngIf="courseForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+                <small *ngIf="courseForm.get('name')?.errors?.['pattern']">Solo se permiten letras, números y
+                    espacios.</small>
+            </div>
+        </div>
+
+        <!-- CODE -->
+        <div class="mb-3">
+            <label for="courseCodeEdit" class="form-label fw-bolder">Código del Curso:</label>
+            <input formControlName="code" type="text" class="form-control bg-input" id="courseCodeEdit"
+                placeholder="Ej: CUR001" />
+            <div *ngIf="courseForm.get('code')?.invalid && courseForm.get('code')?.touched" class="text-danger">
+                <small *ngIf="courseForm.get('code')?.errors?.['required']">El código es obligatorio.</small>
+                <small *ngIf="courseForm.get('code')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+                <small *ngIf="courseForm.get('code')?.errors?.['pattern']">Solo se permiten letras y números, sin
+                    espacios ni símbolos.</small>
+            </div>
+        </div>
+
+        <!-- CREDITS -->
+        <div class="mb-3">
+            <label for="courseCreditsEdit" class="form-label fw-bolder">Créditos:</label>
+            <input formControlName="credits" type="number" class="form-control bg-input" id="courseCreditsEdit"
+                placeholder="Ej: 10" />
+            <div *ngIf="courseForm.get('credits')?.invalid && courseForm.get('credits')?.touched" class="text-danger">
+                <small *ngIf="courseForm.get('credits')?.errors?.['required']">Los créditos son obligatorios.</small>
+                <small *ngIf="courseForm.get('credits')?.errors?.['min']">Debe ser mayor a 0.</small>
+                <small *ngIf="courseForm.get('credits')?.errors?.['max']">Debe ser menor o igual a 100.</small>
+            </div>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" class="btn btn-personalized-2 mx-1 fw-bold" aria-label="Editar Curso">
+                Guardar cambios
+            </button>
+            <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold" (click)="close()">Cancelar</button>
+        </div>
+    </form>
+</div>

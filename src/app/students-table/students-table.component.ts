@@ -15,6 +15,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
+import { Router, RouterModule } from '@angular/router';
+import { RoutePaths } from '../../shared/routes';
 
 @Component({
   selector: 'app-students-table',
@@ -25,7 +27,8 @@ import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    FullnamePipe
+    FullnamePipe,
+    RouterModule
   ],
   templateUrl: './students-table.component.html',
   styleUrls: ['./students-table.component.css']
@@ -34,6 +37,8 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
   @Input() students: Student[] = [];
   @Output() editStudent = new EventEmitter<Student>();
   @Output() deleteStudent = new EventEmitter<Student>();
+
+  constructor(private router: Router){}
 
   displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
   dataSource = new MatTableDataSource<Student>();
@@ -71,5 +76,13 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  viewDetails(student: Student){
+    this.router.navigate([`${RoutePaths.ALUMNODETALLE}`],
+      {
+        state: { student: student }
+      }
+    )
   }
 }

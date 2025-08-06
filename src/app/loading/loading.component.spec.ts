@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalAddFormComponent } from './modal-add-form.component';
+import { LoadingComponent } from './loading.component';
 
-describe('ModalAddFormComponent', () => {
-  let component: ModalAddFormComponent;
-  let fixture: ComponentFixture<ModalAddFormComponent>;
+describe('LoadingComponent', () => {
+  let component: LoadingComponent;
+  let fixture: ComponentFixture<LoadingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalAddFormComponent]
+      imports: [LoadingComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalAddFormComponent);
+    fixture = TestBed.createComponent(LoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
