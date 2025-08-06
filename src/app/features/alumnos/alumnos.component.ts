@@ -8,11 +8,12 @@ import { AlumnosAPIService } from './alumnos-api.service';
 import { ToolbarStudentComponent } from "../../toolbar-student/toolbar-student.component";
 import { ModalEditFormStudentComponent } from '../../modal-edit-form-student/modal-edit-form-student.component';
 import { Observable, of, switchMap } from 'rxjs';
+import { LoadingComponent } from "../../loading/loading.component";
 declare const swal: any;
 
 @Component({
   selector: 'app-alumnos',
-  imports: [CommonModule, NuestrosSponsorsComponent, ToolbarStudentComponent, StudentsTableComponent],
+  imports: [CommonModule, NuestrosSponsorsComponent, ToolbarStudentComponent, StudentsTableComponent, LoadingComponent],
   templateUrl: './alumnos.component.html',
   styleUrl: './alumnos.component.css'
 })
