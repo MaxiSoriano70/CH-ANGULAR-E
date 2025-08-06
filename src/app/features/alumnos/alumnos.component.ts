@@ -74,7 +74,7 @@ export class AlumnosComponent implements OnInit{
         this.alumnosApi.deleteAlumno(student).pipe(
           switchMap(() => {
             this.loadStudents();
-            return of(null);
+            return of (null);
           })
         ).subscribe({
           next: () => swal('¡Eliminado!', 'El estudiante fue eliminado correctamente.', 'success'),

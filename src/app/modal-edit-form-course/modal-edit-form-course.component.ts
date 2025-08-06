@@ -19,6 +19,7 @@ export class ModalEditFormCourseComponent implements OnInit{
 
   ngOnInit(): void {
     this.courseForm = this.fb.group({
+      id: [this.course.id],
       name: [this.course.name, [Validators.required]],
       code: [this.course.code, [Validators.required]],
       credits: [this.course.credits, [Validators.required, Validators.min(1), Validators.max(100)]]

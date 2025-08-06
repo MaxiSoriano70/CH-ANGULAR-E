@@ -7,28 +7,32 @@ import { Course } from '../../../shared/emtities';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CursosAPIService } from './cursos-api.service';
 import { ModalEditFormCourseComponent } from '../../modal-edit-form-course/modal-edit-form-course.component';
+import { Observable, of, switchMap } from 'rxjs';
+import { LoadingComponent } from "../../loading/loading.component";
 declare const swal: any;
 
 @Component({
   selector: 'app-cursos',
-  imports: [CommonModule, NuestrosSponsorsComponent, ToolbarCourseComponent, CoursesTableComponent],
+  imports: [CommonModule, NuestrosSponsorsComponent, ToolbarCourseComponent, CoursesTableComponent, LoadingComponent],
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.css'
 })
 export class CursosComponent implements OnInit{
-  courses: Course[] = [];
+  courses$!: Observable<Course[]>;
 
   constructor(private cursosApi: CursosAPIService, private modalService: NgbModal) {}
   /* SUBSCRIBE NOTIFICA QUE YA LLEGO */
   ngOnInit(): void {
-    this.cursosApi.getCursos().subscribe(data => {
-      this.courses = data;
-    });
+    this.courses$ = this.cursosApi.getCursos();
+  }
+
+  private loadCourses() {
+    this.courses$ = this.cursosApi.getCursos();
   }
 
   onCourseAdded(course: Course) {
     console.log('Recibido en AppComponent:', course);
-    this.courses = [...this.courses, course];
+    this.loadCourses();
   }
 
   openEditModal(course: Course): void {
@@ -37,9 +41,15 @@ export class CursosComponent implements OnInit{
 
     modalRef.result.then((updatedCourse: Course) => {
       if (updatedCourse) {
-        this.courses = this.courses.map(s =>
-          s.code === updatedCourse.code ? updatedCourse : s
-        );
+        this.cursosApi.updateCurso(updatedCourse).pipe(
+          switchMap(() =>{
+            this.loadCourses();
+            return of (null);
+          })
+        ).subscribe({
+            next: () => swal('Éxito', 'Datos actualizados correctamente.', 'success'),
+            error: () => swal('Error', 'Ocurrió un error al actualizar el curso.', 'error')
+        });
       }
     }).catch(() => {});
   }
@@ -59,12 +69,15 @@ export class CursosComponent implements OnInit{
       dangerMode: true
     }).then((willDelete: boolean) => {
       if (willDelete) {
-        try {
-          this.courses = this.courses.filter(s => s.code !== course.code);
-          swal('¡Eliminado!', 'El curso fue eliminado correctamente.', 'success');
-        } catch (error) {
-          swal('Error', 'Ocurrió un error al eliminar el curso.', 'error');
-        }
+        this.cursosApi.updateCurso(course).pipe(
+          switchMap(() => {
+            this.loadCourses();
+            return of (null);
+          })
+        ).subscribe({
+          next: () => swal('¡Eliminado!', 'El curso fue eliminado correctamente.', 'success'),
+          error: () => swal('Error', 'Ocurrió un error al eliminar el curso.', 'error')
+        });
       }
     });
   }
