@@ -1,2 +1,18 @@
-<p>view-student works!</p>
-{{ student | json}}
+<section class="sAlumno">
+    <article class="aVolver">
+        <button (click)="goBack()" type="button" class="btn btn-success">
+            <i class="fa-solid fa-caret-left"></i> Volver
+        </button>
+    </article>
+
+    <div class="card mt-4 mb-4" style="width: 60%;">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{ student?.name }} {{ student?.surname }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Edad: {{ student?.age }}</li>
+            <li class="list-group-item">Dni: {{ student?.dni }}</li>
+            <li class="list-group-item">Promedio: {{ student?.average }}</li>
+        </ul>
+    </div>
+</section>

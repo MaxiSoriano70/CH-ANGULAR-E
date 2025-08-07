@@ -17,17 +17,21 @@
     --color-negro: #000;
 }
 
+:host {
+    display: block;
+    width: 100%;
+}
+
 .divPrincipal{
     display: grid;
     min-height: 100dvh;
     grid-template-rows: auto 1fr auto;
 }
 
-.mainPrincipal{
+.mainPrincipal {
     display: flex;
-    align-items: center;
-    justify-content: start;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    flex: 1;
 }

@@ -1,11 +1,13 @@
-.nuestras-marcas{
+.nuestras-marcas {
     width: 100%;
+    max-width: 100vw;
     padding: 10px 20px;
-    margin: 20px 0px;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .nuestras-marcas .marca-titulo{
