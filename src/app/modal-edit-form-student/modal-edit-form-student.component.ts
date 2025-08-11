@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Student } from '../../shared/emtities';
+import { Student } from '../../shared/entities';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';

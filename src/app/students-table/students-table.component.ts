@@ -8,7 +8,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { Student } from '../../shared/emtities';
+import { Student } from '../../shared/entities';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';

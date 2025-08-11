@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Student } from '../../../../shared/emtities';
+import { Student } from '../../../../shared/entities';
 import { Router } from '@angular/router';
 import { JsonPipe, Location } from '@angular/common';
 

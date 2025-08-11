@@ -78,15 +78,7 @@
       "surname": "Dominguez",
       "age": 30,
       "dni": 38555444,
-      "average": 9.8
-    },
-    {
-      "id": "8",
-      "name": "Matías",
-      "surname": "Rojas",
-      "age": 24,
-      "dni": 40112233,
-      "average": 8.7
+      "average": 9.9
     },
     {
       "id": "9",
@@ -119,6 +111,14 @@
       "age": 25,
       "dni": 39333666,
       "average": 9.3
+    },
+    {
+      "id": "198d",
+      "name": "Nico",
+      "surname": "Veliz",
+      "age": 26,
+      "dni": 39555666,
+      "average": 9.5
     }
   ]
 }

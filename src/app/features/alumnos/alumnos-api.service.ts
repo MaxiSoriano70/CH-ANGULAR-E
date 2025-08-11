@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable } from 'rxjs';
-import { Student } from '../../../shared/emtities';
+import { Student } from '../../../shared/entities';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

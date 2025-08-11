@@ -3,7 +3,7 @@ import { ToolbarCourseComponent } from "../../toolbar-course/toolbar-course.comp
 import { NuestrosSponsorsComponent } from "../../nuestros-sponsors/nuestros-sponsors.component";
 import { CoursesTableComponent } from "../../courses-table/courses-table.component";
 import { CommonModule } from '@angular/common';
-import { Course } from '../../../shared/emtities';
+import { Course } from '../../../shared/entities';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CursosAPIService } from './cursos-api.service';
 import { ModalEditFormCourseComponent } from '../../modal-edit-form-course/modal-edit-form-course.component';

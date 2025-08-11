@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NuestrosSponsorsComponent } from '../../nuestros-sponsors/nuestros-sponsors.component';
 import { StudentsTableComponent } from '../../students-table/students-table.component';
-import { Student } from '../../../shared/emtities';
+import { Student } from '../../../shared/entities';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlumnosAPIService } from './alumnos-api.service';
 import { ToolbarStudentComponent } from "../../toolbar-student/toolbar-student.component";

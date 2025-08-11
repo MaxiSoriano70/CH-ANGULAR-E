@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Course } from '../../shared/emtities';
+import { Course } from '../../shared/entities';
 
 @Component({
   selector: 'app-modal-add-form-course',

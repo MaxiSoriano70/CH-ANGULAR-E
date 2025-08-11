@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Course } from '../../shared/emtities';
+import { Course } from '../../shared/entities';
 import { CommonModule } from '@angular/common';
 declare const swal: any;
 

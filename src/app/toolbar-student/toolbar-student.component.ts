@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Student } from '../../shared/emtities';
+import { Student } from '../../shared/entities';
 import { ModalAddFormStudentComponent } from '../modal-add-form-student/modal-add-form-student.component';
 declare const swal: any;
 
