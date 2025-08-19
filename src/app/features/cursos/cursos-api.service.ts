@@ -7,23 +7,23 @@ import { Course } from '../../../shared/entities';
   providedIn: 'root'
 })
 export class CursosAPIService {
-  baseUrl = "http://localhost:3000";
+  baseUrl = "https://689986effed141b96b9fc358.mockapi.io/api/v1";
 
   constructor(private http: HttpClient) { }
   /* El OBSERVABLE SON DATOS QUE ESTAB EN CAMINO*/
   addCurso(course: Omit<Course, 'id'>): Observable<Course> {
-    return this.http.post<Course>(`${this.baseUrl}/courses`, course).pipe(delay(1000));
+    return this.http.post<Course>(`${this.baseUrl}/courses`, course);
   }
 
   getCursos(): Observable<Course[]>{
-    return this.http.get<Course[]>(`${this.baseUrl}/courses`).pipe(delay(1000));
+    return this.http.get<Course[]>(`${this.baseUrl}/courses`);
   }
 
   updateCurso(course: Course): Observable<Course> {
-    return this.http.put<Course>(`${this.baseUrl}/courses/${course.id}`, course).pipe(delay(1000));
+    return this.http.put<Course>(`${this.baseUrl}/courses/${course.id}`, course);
   }
 
   deleteCurso(course : Course): Observable<void>{
-    return this.http.delete<void>(`${this.baseUrl}/courses/${course.id}`).pipe(delay(1000));
+    return this.http.delete<void>(`${this.baseUrl}/courses/${course.id}`);
   }
 }

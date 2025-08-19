@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalAddFormStudentComponent } from './modal-add-form-student.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('ModalAddFormStudentComponent', () => {
   let component: ModalAddFormStudentComponent;
@@ -8,7 +9,8 @@ describe('ModalAddFormStudentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalAddFormStudentComponent]
+      imports: [ModalAddFormStudentComponent],
+      providers: [NgbActiveModal]
     })
     .compileComponents();
 
