@@ -1,0 +1,50 @@
+<section class="modal fade" id="iniciarSesionModal" tabindex="-1" aria-labelledby="iniciarSesionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-color-principal">
+                <h5 class="modal-title text-white" id="iniciarSesionModalLabel">
+                    Iniciar Sesión
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body bg-color-fondo">
+                <!-- Usamos Angular Reactive Forms o Template Forms -->
+                <form #formIniciar="ngForm" (ngSubmit)="onSubmit(formIniciar)">
+                    <div class="mb-3">
+                        <label for="email-iniciar-sesion" class="form-label fw-bolder">Email</label>
+                        <input type="email" class="form-control bg-input" id="email-iniciar-sesion"
+                            placeholder="Ingrese su email" name="email" ngModel required email minlength="5"
+                            maxlength="254">
+                        <div *ngIf="formIniciar.submitted && formIniciar.controls['email']?.invalid"
+                            class="text-danger">
+                            Ingrese un email válido
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password-iniciar-sesion" class="form-label fw-bolder">Contraseña</label>
+                        <input type="password" class="form-control bg-input" id="password-iniciar-sesion"
+                            placeholder="Ingrese su contraseña" name="password" ngModel required minlength="6"
+                            maxlength="16" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[^\W_]{6,16}$"
+                            title="Debe contener al menos un número, una letra mayúscula, una letra minúscula, y entre 6 y 16 caracteres">
+                        <div *ngIf="formIniciar.submitted && formIniciar.controls['password']?.invalid"
+                            class="text-danger">
+                            La contraseña no cumple los requisitos
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button type="submit" class="btn btn-personalized-2 mx-1 fw-bold">
+                            Ingresar
+                        </button>
+                        <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold"
+                            aria-label="Cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
