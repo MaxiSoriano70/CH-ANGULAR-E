@@ -5,12 +5,17 @@ export const routes: Routes = [
     {
         path: RoutePaths.HOME,
         loadComponent: () =>
-        import('./features/alumnos/alumnos.component').then(m => m.AlumnosComponent)
+        import('./features/home/home.component').then(m => m.HomeComponent)
     },
     {
         path: RoutePaths.USUARIOS,
         loadComponent: () =>
         import('./features/usuarios/usuarios.component').then(m => m.UsuariosComponent)
+    },
+    {
+        path: RoutePaths.ALUMNOS,
+        loadComponent: () =>
+        import('./features/alumnos/alumnos.component').then(m => m.AlumnosComponent)
     },
     {
         path: RoutePaths.CURSOS,
