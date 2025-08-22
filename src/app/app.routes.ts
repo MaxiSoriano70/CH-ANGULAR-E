@@ -8,6 +8,11 @@ export const routes: Routes = [
         import('./features/alumnos/alumnos.component').then(m => m.AlumnosComponent)
     },
     {
+        path: RoutePaths.USUARIOS,
+        loadComponent: () =>
+        import('./features/usuarios/usuarios.component').then(m => m.UsuariosComponent)
+    },
+    {
         path: RoutePaths.CURSOS,
         loadComponent: () =>
         import('./features/cursos/cursos.component').then(m => m.CursosComponent)
@@ -21,6 +26,11 @@ export const routes: Routes = [
         path: RoutePaths.ALUMNODETALLE,
         loadComponent: () =>
         import('./features/alumnos/view-student/view-student.component').then(m => m.ViewStudentComponent)
+    },
+    {
+        path: RoutePaths.USUARIODETALLE,
+        loadComponent: () =>
+        import('./features/usuarios/view-usuario/view-usuario.component').then(m => m.ViewUsuarioComponent)
     },
     {
     path: RoutePaths.ERROR404,

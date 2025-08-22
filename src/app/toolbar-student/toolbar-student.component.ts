@@ -21,7 +21,6 @@ export class ToolbarStudentComponent {
 
     modalRef.result.then(
       (newStudent: User) => {
-        console.log('Nuevo estudiante:', newStudent);
         if (newStudent) {
           this.addStudent.emit(newStudent);
           swal("¡Éxito!", "El estudiante fue agregado correctamente.", "success");

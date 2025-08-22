@@ -3,7 +3,7 @@
         <article class="logo">
             <a [routerLink]="[routePaths.HOME]" aria-label="Logo y nombre">
                 <img src="assets/imagenes/Logo.png" alt="Logo PetShop">
-                <p>CarnetVet</p>
+                <p>CursosVet</p>
             </a>
         </article>
         <nav class="menu">
@@ -24,6 +24,7 @@
                     <a href="#" aria-label="Administrar"><i class="fa-solid fa-user-tie"></i> Administrar</a>
                     <i class="fa-solid fa-caret-down"></i>
                     <ul class="submenu">
+                        <li><a [routerLink]="[routePaths.USUARIOS]" aria-label="Usuarios"><span><i class="fa-solid fa-users"></i> Usuarios</span></a></li>
                         <li><a [routerLink]="[routePaths.CURSOS]" aria-label="Cursos"><span><i class="fa-solid fa-graduation-cap"></i> Cursos</span></a></li>
                         <li><a [routerLink]="[routePaths.INSCRIPCIONES]" aria-label="Inscripciones"><span><i class="fa-solid fa-clipboard-list"></i> Inscripciones</span></a></li>
                     </ul>

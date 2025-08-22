@@ -1,28 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../shared/entities';
 import { tipoUser } from '../../shared/tipoUser';
 
 @Component({
-  selector: 'app-modal-add-form-student',
+  selector: 'app-modal-add-form-usuario',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './modal-add-form-student.component.html',
-  styleUrl: './modal-add-form-student.component.css'
+  templateUrl: './modal-add-form-usuario.component.html',
+  styleUrl: './modal-add-form-usuario.component.css'
 })
 
-export class ModalAddFormStudentComponent implements OnInit{
-  studentForm!: FormGroup;
+export class ModalAddFormUsuarioComponent implements OnInit{
+  userForm!: FormGroup;
+  tipoUserOptions = Object.values(tipoUser);
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {}
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder){}
 
   close() {
     this.activeModal.dismiss();
   }
 
   ngOnInit() {
-      this.studentForm = this.formBuilder.group({
+      this.userForm = this.formBuilder.group({
         name: [
         '',
         [
@@ -69,15 +70,15 @@ export class ModalAddFormStudentComponent implements OnInit{
         '',
         [Validators.required, Validators.email]
       ],
-      role: tipoUser.USER
+      role: [tipoUser.USER, Validators.required]
       });
   }
 
   onSubmit() {
-    if (this.studentForm.valid) {
-      this.activeModal.close(this.studentForm.value as User);
+    if (this.userForm.valid) {
+      this.activeModal.close(this.userForm.value as User);
     } else {
-      this.studentForm.markAllAsTouched();
+      this.userForm.markAllAsTouched();
     }
   }
 }

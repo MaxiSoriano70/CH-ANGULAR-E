@@ -1,0 +1,99 @@
+<div class="modal-header bg-color-principal">
+    <h5 class="modal-title text-white">Agregar Usuario</h5>
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body bg-color-fondo">
+    <form id="form-registro" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <!-- NOMBRE -->
+        <div class="mb-3">
+            <label for="nombreRegistro" class="form-label fw-bolder">Nombre:</label>
+            <input formControlName="name" type="text" class="form-control bg-input" id="nombreRegistro"
+                placeholder="Ingrese su nombre..." />
+            <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+                <small *ngIf="userForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+                <small *ngIf="userForm.get('name')?.errors?.['pattern']">Solo se permiten letras y espacios.</small>
+            </div>
+        </div>
+
+        <!-- APELLIDO -->
+        <div class="mb-3">
+            <label for="apellidoRegistro" class="form-label fw-bolder">Apellido:</label>
+            <input formControlName="surname" type="text" class="form-control bg-input" id="apellidoRegistro"
+                placeholder="Ingrese apellido..." />
+            <div *ngIf="userForm.get('surname')?.invalid && userForm.get('surname')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('surname')?.errors?.['required']">El apellido es obligatorio.</small>
+                <small *ngIf="userForm.get('surname')?.errors?.['minlength']">Debe tener al menos 3
+                    caracteres.</small>
+                <small *ngIf="userForm.get('surname')?.errors?.['pattern']">Solo se permiten letras y
+                    espacios.</small>
+            </div>
+        </div>
+
+        <!-- EDAD -->
+        <div class="mb-3">
+            <label for="edadRegistro" class="form-label fw-bolder">Edad:</label>
+            <input formControlName="age" type="number" class="form-control bg-input" id="edadRegistro"
+                placeholder="Ingresa tu edad" />
+            <div *ngIf="userForm.get('age')?.invalid && userForm.get('age')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('age')?.errors?.['required']">La edad es obligatoria.</small>
+                <small *ngIf="userForm.get('age')?.errors?.['min']">Debe ser mayor o igual a 1.</small>
+                <small *ngIf="userForm.get('age')?.errors?.['max']">Debe ser menor o igual a 120.</small>
+            </div>
+        </div>
+
+        <!-- DNI -->
+        <div class="mb-3">
+            <label for="dniRegistro" class="form-label fw-bolder">DNI:</label>
+            <input formControlName="dni" type="number" class="form-control bg-input" id="dniRegistro"
+                placeholder="Ingresa tu DNI" />
+            <div *ngIf="userForm.get('dni')?.invalid && userForm.get('dni')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('dni')?.errors?.['required']">El DNI es obligatorio.</small>
+                <small *ngIf="userForm.get('dni')?.errors?.['min']">Debe ser mayor a 1.000.000.</small>
+                <small *ngIf="userForm.get('dni')?.errors?.['max']">Debe ser menor a 99.999.999.</small>
+            </div>
+        </div>
+
+        <!-- PROMEDIO -->
+        <div class="mb-3">
+            <label for="promedioRegistro" class="form-label fw-bolder">Promedio:</label>
+            <input formControlName="average" type="number" class="form-control bg-input" id="promedioRegistro"
+                placeholder="Ingresa tu promedio" step="0.01" />
+            <div *ngIf="userForm.get('average')?.invalid && userForm.get('average')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('average')?.errors?.['required']">El promedio es obligatorio.</small>
+                <small *ngIf="userForm.get('average')?.errors?.['min']">Debe ser mayor o igual a 1.</small>
+                <small *ngIf="userForm.get('average')?.errors?.['max']">Debe ser menor o igual a 10.</small>
+            </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="mb-3">
+            <label for="emailRegistro" class="form-label fw-bolder">Email:</label>
+            <input formControlName="email" type="email" class="form-control bg-input" id="emailRegistro"
+                placeholder="ejemplo@correo.com" />
+            <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger">
+                <small *ngIf="userForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+                <small *ngIf="userForm.get('email')?.errors?.['email']">Debe ser un email válido.</small>
+            </div>
+        </div>
+
+        <!-- ROLE -->
+        <div class="mb-3">
+            <label for="roleRegistro" class="form-label fw-bolder">Rol:</label>
+            <select formControlName="role" id="roleRegistro" class="form-select bg-input">
+                <option *ngFor="let tipo of tipoUserOptions" [value]="tipo">{{ tipo }}</option>
+            </select>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit" id="botonRegistrarse" class="btn btn-personalized-2 mx-1 fw-bold"
+                aria-label="Agregar">
+                Agregar
+            </button>
+            <button type="reset" class="btn btn-personalized-1 mx-1 fw-bold" (click)="close()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

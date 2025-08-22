@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModalEditFormStudentComponent } from './modal-edit-form-student.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { tipoUser } from '../../shared/tipoUser';
 
 describe('ModalEditFormStudentComponent', () => {
   let component: ModalEditFormStudentComponent;
@@ -22,7 +23,9 @@ describe('ModalEditFormStudentComponent', () => {
       surname: 'Diaz',
       age: 23,
       dni: 38123456,
-      average: 9.1
+      average: 9.1,
+      email: "sofia.diaz@gmail.com",
+      role: tipoUser.USER
     };
 
     fixture.detectChanges();
