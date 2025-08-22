@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ModalAddFormCourseComponent } from './modal-add-form-course.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 

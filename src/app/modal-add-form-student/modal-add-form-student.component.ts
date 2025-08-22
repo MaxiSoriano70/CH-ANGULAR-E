@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Student } from '../../shared/entities';
+import { User } from '../../shared/entities';
+import { tipoUser } from '../../shared/tipoUser';
 
 @Component({
   selector: 'app-modal-add-form-student',
@@ -62,13 +63,18 @@ export class ModalAddFormStudentComponent implements OnInit{
           Validators.min(1),
           Validators.max(10)
         ]
-      ]
+      ],
+      email: [
+        '',
+        [Validators.required, Validators.email]
+      ],
+      role: tipoUser.USER
       });
   }
 
   onSubmit() {
     if (this.studentForm.valid) {
-      this.activeModal.close(this.studentForm.value as Student);
+      this.activeModal.close(this.studentForm.value as User);
     } else {
       this.studentForm.markAllAsTouched();
     }

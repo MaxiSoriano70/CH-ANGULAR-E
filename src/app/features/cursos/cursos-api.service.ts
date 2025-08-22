@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Course } from '../../../shared/entities';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CursosAPIService {
   baseUrl = "https://689986effed141b96b9fc358.mockapi.io/api/v1";
 

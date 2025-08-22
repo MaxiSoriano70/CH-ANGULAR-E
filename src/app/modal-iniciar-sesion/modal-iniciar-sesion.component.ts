@@ -20,7 +20,7 @@ export class ModalIniciarSesionComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
       console.log('Datos de login:', form.value);
-      this.activeModal.close(form.value); // devolvemos los datos al navbar
+      this.activeModal.close(form.value);
     } else {
       console.log('Formulario inválido');
     }

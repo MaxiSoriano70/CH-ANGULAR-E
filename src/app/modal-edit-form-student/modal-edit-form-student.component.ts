@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Student } from '../../shared/entities';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { User } from '../../shared/entities';
 declare const swal: any;
 
 @Component({
@@ -12,7 +12,7 @@ declare const swal: any;
   styleUrl: './modal-edit-form-student.component.css'
 })
 export class ModalEditFormStudentComponent implements OnInit{
-  @Input() student!: Student;
+  @Input() student!: User;
   studentForm!: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {}
@@ -25,6 +25,7 @@ export class ModalEditFormStudentComponent implements OnInit{
       age: [this.student.age, [Validators.required, Validators.min(1), Validators.max(120)]],
       dni: [this.student.dni, [Validators.required]],
       average: [this.student.average, [Validators.required, Validators.min(1), Validators.max(10)]],
+      email: [this.student.email, [Validators.required, Validators.email]]
     });
   }
 
@@ -45,7 +46,7 @@ export class ModalEditFormStudentComponent implements OnInit{
       }).then((willSave: boolean) => {
         if (willSave) {
           try {
-            this.activeModal.close(this.studentForm.value as Student);
+            this.activeModal.close(this.studentForm.value as User);
             swal('¡Éxito!', 'Los cambios fueron guardados correctamente.', 'success');
           } catch (error) {
             swal('Error', 'Ocurrió un error al guardar los cambios.', 'error');

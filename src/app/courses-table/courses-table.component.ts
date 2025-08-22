@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './courses-table.component.html',
   styleUrl: './courses-table.component.css'
 })
-export class CoursesTableComponent implements OnChanges, AfterViewInit{
+
+export class CoursesTableComponent implements OnChanges, AfterViewInit {
   @Input() courses: Course[] = [];
   @Output() editCourse = new EventEmitter<Course>();
   @Output() deleteCourse = new EventEmitter<Course>();
