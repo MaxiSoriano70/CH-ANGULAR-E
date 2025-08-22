@@ -1,0 +1,22 @@
+<app-nuestros-sponsors></app-nuestros-sponsors>
+
+<section class="sCursos">
+    <article class="marca-titulo">
+        <h3 appBigtittle>Cursos</h3>
+    </article>
+
+    <div *ngIf="courses$ | async as courses; else loading">
+        <article class="aCursos">
+            <div *ngFor="let course of courses" class="card text-center mb-3" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.name }}</h5>
+                    <p class="card-text">Créditos: {{ course.credits }}</p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <ng-template #loading>
+        <app-loading></app-loading>
+    </ng-template>
+</section>
