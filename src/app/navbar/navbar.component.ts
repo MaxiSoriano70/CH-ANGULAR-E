@@ -9,11 +9,12 @@ import { iniciarSesion, cerrarSesion } from '../ngrx/sesion/sesion.actions';
 import { Observable } from 'rxjs';
 import { User } from '../../shared/entities';
 import { CommonModule } from '@angular/common';
+import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
 declare const swal: any;
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FullnamePipe],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -54,12 +55,23 @@ export class NavbarComponent {
   }
 
   cerrarSesion() {
-    this.store.dispatch(cerrarSesion());
     swal({
-      title: 'Sesión cerrada',
-      icon: 'info',
-      timer: 2000,
-      buttons: false
+      title: "¿Estás seguro?",
+      text: "Se cerrará tu sesión actual.",
+      icon: "warning",
+      buttons: ["Cancelar", "Sí, cerrar sesión"],
+      dangerMode: true,
+    }).then((confirmar : boolean) => {
+      if (confirmar) {
+        this.store.dispatch(cerrarSesion());
+        swal({
+          title: "Sesión cerrada",
+          icon: "info",
+          timer: 2000,
+          buttons: false
+        });
+      }
     });
   }
+
 }

@@ -43,7 +43,7 @@
                     <a href="#" aria-label="A cerca de nosotros"><i class="fa-solid fa-circle-info"></i> A cerca de nosotros</a>
                 </li>
                 <li class="dropdown" *ngIf="usuario$ | async as usuario">
-                    <a href="#" aria-label="Nombre usuario"><i class="fa-solid fa-user"></i> <span id="nombre-usuario"></span></a>
+                    <a href="#" aria-label="Nombre usuario"><i class="fa-solid fa-user"></i> <span id="nombre-usuario"> {{usuario.name | fullname: usuario.surname}}</span></a>
                     <i class="fa-solid fa-caret-down"></i>
                     <ul class="submenu">
                         <!-- Button modal Editar Perfil-->
