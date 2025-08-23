@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalIniciarSesionComponent } from './modal-iniciar-sesion.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('ModalIniciarSesionComponent', () => {
   let component: ModalIniciarSesionComponent;
@@ -8,7 +9,8 @@ describe('ModalIniciarSesionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalIniciarSesionComponent]
+      imports: [ModalIniciarSesionComponent],
+      providers: [NgbActiveModal]
     })
     .compileComponents();
 
