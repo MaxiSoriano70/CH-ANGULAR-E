@@ -49,7 +49,11 @@ export class ModalEditFormUsuarioComponent implements OnInit{
       }).then((willSave: boolean) => {
         if (willSave) {
           try {
-            this.activeModal.close(this.userForm.value as User);
+            const updatedUser: User = {
+            ...this.user,
+            ...this.userForm.value
+          };
+          this.activeModal.close(updatedUser as User);
             swal('¡Éxito!', 'Los cambios fueron guardados correctamente.', 'success');
           } catch (error) {
             swal('Error', 'Ocurrió un error al guardar los cambios.', 'error');

@@ -12,18 +12,18 @@ import { tipoUser } from '../../shared/tipoUser';
   styleUrl: './modal-add-form-student.component.css'
 })
 
-export class ModalAddFormStudentComponent implements OnInit{
+export class ModalAddFormStudentComponent implements OnInit {
   studentForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {}
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) { }
 
   close() {
     this.activeModal.dismiss();
   }
 
   ngOnInit() {
-      this.studentForm = this.formBuilder.group({
-        name: [
+    this.studentForm = this.formBuilder.group({
+      name: [
         '',
         [
           Validators.required,
@@ -69,15 +69,25 @@ export class ModalAddFormStudentComponent implements OnInit{
         '',
         [Validators.required, Validators.email]
       ],
-      role: tipoUser.USER
-      });
+      role: tipoUser.USER,
+      password: ['']
+    });
   }
 
   onSubmit() {
     if (this.studentForm.valid) {
-      this.activeModal.close(this.studentForm.value as User);
+      const formValue = this.studentForm.value;
+      const cleanSurname = formValue.surname
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      formValue.password = `${cleanSurname}-1234`;
+
+      this.activeModal.close(formValue as User);
     } else {
       this.studentForm.markAllAsTouched();
     }
   }
+
+
 }

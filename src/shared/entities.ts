@@ -1,13 +1,14 @@
 import { tipoUser } from "./tipoUser";
 
 export interface User{
-    id: number,
+    id: string,
     name: string;
     surname: string;
     age: number;
     dni: number;
     average: number;
     email: string;
+    password: string;
     role: tipoUser;
 }
 

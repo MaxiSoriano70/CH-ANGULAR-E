@@ -70,13 +70,21 @@ export class ModalAddFormUsuarioComponent implements OnInit{
         '',
         [Validators.required, Validators.email]
       ],
-      role: [tipoUser.USER, Validators.required]
+      role: [tipoUser.USER, Validators.required],
+      password: ['']
       });
   }
 
   onSubmit() {
     if (this.userForm.valid) {
-      this.activeModal.close(this.userForm.value as User);
+      const formValue = this.userForm.value;
+      const cleanSurname = formValue.surname
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      formValue.password = `${cleanSurname}-1234`;
+
+      this.activeModal.close(formValue as User);
     } else {
       this.userForm.markAllAsTouched();
     }

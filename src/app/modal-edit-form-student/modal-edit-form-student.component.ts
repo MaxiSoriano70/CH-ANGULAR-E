@@ -11,11 +11,11 @@ declare const swal: any;
   templateUrl: './modal-edit-form-student.component.html',
   styleUrl: './modal-edit-form-student.component.css'
 })
-export class ModalEditFormStudentComponent implements OnInit{
+export class ModalEditFormStudentComponent implements OnInit {
   @Input() student!: User;
   studentForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {}
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.studentForm = this.fb.group({
@@ -37,16 +37,19 @@ export class ModalEditFormStudentComponent implements OnInit{
         icon: 'warning',
         buttons: {
           cancel: 'Cancelar',
-          confirm: {
-            text: 'Sí, guardar',
-            value: true,
-          }
+          confirm: { text: 'Sí, guardar', value: true }
         },
         dangerMode: true
       }).then((willSave: boolean) => {
         if (willSave) {
           try {
-            this.activeModal.close(this.studentForm.value as User);
+            // Combinar objeto original con valores editables
+            const updatedStudent = {
+              ...this.student,           // trae password y role
+              ...this.studentForm.value  // sobrescribe los campos editables
+            };
+
+            this.activeModal.close(updatedStudent); // no hace falta "as User"
             swal('¡Éxito!', 'Los cambios fueron guardados correctamente.', 'success');
           } catch (error) {
             swal('Error', 'Ocurrió un error al guardar los cambios.', 'error');
@@ -57,6 +60,7 @@ export class ModalEditFormStudentComponent implements OnInit{
       this.studentForm.markAllAsTouched();
     }
   }
+
 
   close(): void {
     this.activeModal.dismiss();
