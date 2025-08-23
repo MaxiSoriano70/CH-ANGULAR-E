@@ -40,16 +40,15 @@ export class ModalEditFormStudentComponent implements OnInit {
           confirm: { text: 'Sí, guardar', value: true }
         },
         dangerMode: true
-      }).then((willSave: boolean) => {
-        if (willSave) {
+      }).then((confirmar: boolean) => {
+        if (confirmar) {
           try {
-            // Combinar objeto original con valores editables
             const updatedStudent = {
-              ...this.student,           // trae password y role
-              ...this.studentForm.value  // sobrescribe los campos editables
+              ...this.student,
+              ...this.studentForm.value
             };
 
-            this.activeModal.close(updatedStudent); // no hace falta "as User"
+            this.activeModal.close(updatedStudent);
             swal('¡Éxito!', 'Los cambios fueron guardados correctamente.', 'success');
           } catch (error) {
             swal('Error', 'Ocurrió un error al guardar los cambios.', 'error');
