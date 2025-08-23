@@ -88,6 +88,4 @@ export class ModalAddFormStudentComponent implements OnInit {
       this.studentForm.markAllAsTouched();
     }
   }
-
-
 }
