@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RoutePaths } from '../../shared/routes';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,10 +16,9 @@ declare const swal: any;
   selector: 'app-navbar',
   imports: [CommonModule, RouterModule, FullnamePipe],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
-
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   routePaths = RoutePaths;
   usuario$: Observable<User | null>;
 
@@ -27,12 +26,23 @@ export class NavbarComponent {
     this.usuario$ = this.store.select(state => state.sesion.usuarioLogueado);
   }
 
+  ngOnInit() {
+    if (typeof localStorage !== 'undefined') {
+      const usuarioGuardado = localStorage.getItem('usuarioLogueado');
+      if (usuarioGuardado) {
+        const usuario = JSON.parse(usuarioGuardado);
+        this.store.dispatch(iniciarSesion({ usuario }));
+      }
+    }
+  }
+
   abrirModal() {
     const modalRef = this.modalService.open(ModalIniciarSesionComponent, { centered: true });
 
     modalRef.result.then(
       (usuario) => {
-        if (usuario) {
+        if (usuario && typeof localStorage !== 'undefined') {
+          localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
           this.store.dispatch(iniciarSesion({ usuario }));
           swal({
             title: `¡Bienvenido, ${usuario.name} ${usuario.surname}!`,
@@ -61,8 +71,9 @@ export class NavbarComponent {
       icon: "warning",
       buttons: ["Cancelar", "Sí, cerrar sesión"],
       dangerMode: true,
-    }).then((confirmar : boolean) => {
-      if (confirmar) {
+    }).then((confirmar: boolean) => {
+      if (confirmar && typeof localStorage !== 'undefined') {
+        localStorage.removeItem('usuarioLogueado');
         this.store.dispatch(cerrarSesion());
         swal({
           title: "Sesión cerrada",
@@ -73,5 +84,4 @@ export class NavbarComponent {
       }
     });
   }
-
 }
