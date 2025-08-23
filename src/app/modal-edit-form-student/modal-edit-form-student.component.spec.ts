@@ -18,13 +18,14 @@ describe('ModalEditFormStudentComponent', () => {
     component = fixture.componentInstance;
 
     component.student = {
-      id: 5,
+      id: "5",
       name: 'Sofia',
       surname: 'Diaz',
       age: 23,
       dni: 38123456,
       average: 9.1,
       email: "sofia.diaz@gmail.com",
+      password: "Sofia-123",
       role: tipoUser.USER
     };
 
