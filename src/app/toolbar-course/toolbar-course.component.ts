@@ -10,6 +10,7 @@ declare const swal: any;
   templateUrl: './toolbar-course.component.html',
   styleUrl: './toolbar-course.component.css'
 })
+
 export class ToolbarCourseComponent {
   @Output() addStudent = new EventEmitter<Course>();
 

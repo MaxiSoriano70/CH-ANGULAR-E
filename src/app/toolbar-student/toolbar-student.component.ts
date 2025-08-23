@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Student } from '../../shared/entities';
 import { ModalAddFormStudentComponent } from '../modal-add-form-student/modal-add-form-student.component';
+import { User } from '../../shared/entities';
 declare const swal: any;
 
 @Component({
@@ -12,7 +12,7 @@ declare const swal: any;
 })
 
 export class ToolbarStudentComponent {
-  @Output() addStudent = new EventEmitter<Student>();
+  @Output() addStudent = new EventEmitter<User>();
 
   constructor(private modalService: NgbModal) {}
 
@@ -20,8 +20,7 @@ export class ToolbarStudentComponent {
     const modalRef = this.modalService.open(ModalAddFormStudentComponent, { centered: true });
 
     modalRef.result.then(
-      (newStudent: Student) => {
-        console.log('Nuevo estudiante:', newStudent);
+      (newStudent: User) => {
         if (newStudent) {
           this.addStudent.emit(newStudent);
           swal("¡Éxito!", "El estudiante fue agregado correctamente.", "success");

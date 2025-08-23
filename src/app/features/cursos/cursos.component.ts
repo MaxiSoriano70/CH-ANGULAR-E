@@ -17,6 +17,7 @@ declare const swal: any;
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.css'
 })
+
 export class CursosComponent implements OnInit{
   courses$!: Observable<Course[]>;
 

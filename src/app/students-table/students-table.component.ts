@@ -8,7 +8,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { Student } from '../../shared/entities';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -17,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { RoutePaths } from '../../shared/routes';
+import { User } from '../../shared/entities';
 
 @Component({
   selector: 'app-students-table',
@@ -34,14 +34,14 @@ import { RoutePaths } from '../../shared/routes';
   styleUrls: ['./students-table.component.css']
 })
 export class StudentsTableComponent implements OnChanges, AfterViewInit {
-  @Input() students: Student[] = [];
-  @Output() editStudent = new EventEmitter<Student>();
-  @Output() deleteStudent = new EventEmitter<Student>();
+  @Input() students: User[] = [];
+  @Output() editStudent = new EventEmitter<User>();
+  @Output() deleteStudent = new EventEmitter<User>();
 
   constructor(private router: Router){}
 
-  displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
-  dataSource = new MatTableDataSource<Student>();
+  displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'email', 'actions'];
+  dataSource = new MatTableDataSource<User>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -52,11 +52,11 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
     this.dataSource.data = this.students;
   }
 
-  onEdit(student: Student): void {
+  onEdit(student: User): void {
     this.editStudent.emit(student);
   }
 
-  onDelete(student: Student): void {
+  onDelete(student: User): void {
     this.deleteStudent.emit(student);
   }
 
@@ -78,7 +78,7 @@ export class StudentsTableComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  viewDetails(student: Student){
+  viewDetails(student: User){
     this.router.navigate([`${RoutePaths.ALUMNODETALLE}`],
       {
         state: { student: student }

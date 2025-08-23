@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NuestrosSponsorsComponent } from '../../nuestros-sponsors/nuestros-sponsors.component';
 import { StudentsTableComponent } from '../../students-table/students-table.component';
-import { Student } from '../../../shared/entities';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlumnosAPIService } from './alumnos-api.service';
 import { ToolbarStudentComponent } from "../../toolbar-student/toolbar-student.component";
 import { ModalEditFormStudentComponent } from '../../modal-edit-form-student/modal-edit-form-student.component';
 import { Observable, of, switchMap } from 'rxjs';
 import { LoadingComponent } from "../../loading/loading.component";
+import { User } from '../../../shared/entities';
 declare const swal: any;
 
 @Component({
@@ -17,9 +17,10 @@ declare const swal: any;
   templateUrl: './alumnos.component.html',
   styleUrl: './alumnos.component.css'
 })
+
 export class AlumnosComponent implements OnInit{
   /* DUDA PIPE ASYNC */
-  students$!: Observable<Student[]>;
+  students$!: Observable<User[]>;
 
   constructor(private alumnosApi: AlumnosAPIService, private modalService: NgbModal) {}
   /* SUBSCRIBE NOTIFICA QUE YA LLEGO */
@@ -31,7 +32,7 @@ export class AlumnosComponent implements OnInit{
     this.students$ = this.alumnosApi.getAlumnos();
   }
 
-  onStudentAdded(student: Student) {
+  onStudentAdded(student: User) {
     this.alumnosApi.addAlumno(student).pipe(
       switchMap(() => {
         this.loadStudents();
@@ -43,11 +44,11 @@ export class AlumnosComponent implements OnInit{
     });
   }
 
-  openEditModal(student: Student): void {
+  openEditModal(student: User): void {
     const modalRef = this.modalService.open(ModalEditFormStudentComponent);
     modalRef.componentInstance.student = student;
 
-    modalRef.result.then((updatedStudent: Student) => {
+    modalRef.result.then((updatedStudent: User) => {
       if (updatedStudent) {
           this.alumnosApi.updateAlumno(updatedStudent).pipe(
             switchMap(() => {
@@ -63,7 +64,7 @@ export class AlumnosComponent implements OnInit{
   }
 
 
-  onStudentDeleted(student: Student): void {
+  onStudentDeleted(student: User): void {
     swal({
       title: '¿Estás seguro?',
       text: `Eliminar al estudiante: ${student.name} ${student.surname}`,

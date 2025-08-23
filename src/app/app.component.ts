@@ -17,5 +17,9 @@ import { FooterComponent } from './footer/footer.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-entrega-2';
+  title = 'AngularEntrega3';
+
+  obtenerTitulo(){
+    return "Entrega 3";
+  }
 }

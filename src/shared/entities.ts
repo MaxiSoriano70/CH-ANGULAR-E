@@ -1,10 +1,15 @@
-export interface Student{
-    id: number,
+import { tipoUser } from "./tipoUser";
+
+export interface User{
+    id: string,
     name: string;
     surname: string;
     age: number;
     dni: number;
     average: number;
+    email: string;
+    password: string;
+    role: tipoUser;
 }
 
 export interface Course{

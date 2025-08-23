@@ -11,6 +11,7 @@ declare const swal: any;
   templateUrl: './modal-edit-form-course.component.html',
   styleUrl: './modal-edit-form-course.component.css'
 })
+
 export class ModalEditFormCourseComponent implements OnInit{
   @Input() course!: Course;
   courseForm!: FormGroup;
