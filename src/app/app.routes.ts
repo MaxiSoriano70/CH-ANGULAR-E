@@ -9,6 +9,11 @@ export const routes: Routes = [
         import('./features/home/home.component').then(m => m.HomeComponent)
     },
     {
+        path: RoutePaths.TIPS,
+        loadComponent: () =>
+        import('./features/tips/tips.component').then(m => m.TipsComponent)
+    },
+    {
         path: RoutePaths.USUARIOS,
         canActivate: [ruteoGuard(['ADMIN'])],
         loadComponent: () =>

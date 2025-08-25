@@ -30,6 +30,9 @@
                         <li><a [routerLink]="[routePaths.INSCRIPCIONES]" aria-label="Inscripciones"><span><i class="fa-solid fa-clipboard-list"></i> Inscripciones</span></a></li>
                     </ul>
                 </li>
+                <li>
+                    <a [routerLink]="[routePaths.TIPS]" aria-label="tips"><i class="fa-solid fa-circle-info"></i> Tips</a>
+                </li>
                 <li class="dropdown">
                     <a href="#" aria-label="Contacto"><i class="fa-solid fa-envelope"></i> Contacto</a>
                     <i class="fa-solid fa-caret-down"></i>
@@ -38,9 +41,6 @@
                         <li><a href="#" aria-label="Instragram"><span><i class="fa-brands fa-instagram"></i> Instragram</span></a></li>
                         <li><a href="#" aria-label="Facebook"><span><i class="fa-brands fa-facebook"></i> Facebook</span></a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#" aria-label="A cerca de nosotros"><i class="fa-solid fa-circle-info"></i> A cerca de nosotros</a>
                 </li>
                 <li class="dropdown" *ngIf="usuario$ | async as usuario">
                     <a href="#" aria-label="Nombre usuario"><i class="fa-solid fa-user"></i> <span id="nombre-usuario"> {{usuario.name | fullname: usuario.surname}}</span></a>
