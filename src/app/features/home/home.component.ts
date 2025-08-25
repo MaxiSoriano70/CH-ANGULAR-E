@@ -6,10 +6,11 @@ import { Course } from '../../../shared/entities';
 import { HomeApiService } from './home-api.service';
 import { LoadingComponent } from '../../loading/loading.component';
 import { BigtittleDirective } from '../../../shared/directives/bigtittle.directive';
+import { VeterinariaComponent } from "../../veterinaria/veterinaria.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, NuestrosSponsorsComponent, LoadingComponent, BigtittleDirective],
+  imports: [CommonModule, NuestrosSponsorsComponent, LoadingComponent, BigtittleDirective, VeterinariaComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
