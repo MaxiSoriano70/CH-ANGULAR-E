@@ -28,6 +28,11 @@
     justify-content: center;
     background-color: var(--color-blanco);
     box-shadow: 2px 3px 5px rgba(73, 69, 52, 0.4);
+    animation-name: show;
+    animation-timeline: view();
+    animation-range: entry 15% cover 40%;
+    animation-fill-mode: both;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tip-d .image-mascota{
@@ -72,6 +77,11 @@
     flex-direction: row-reverse;
     background-color: var(--color-blanco);
     box-shadow: 2px 3px 5px rgba(73, 69, 52, 0.4);
+    animation-name: show;
+    animation-timeline: view();
+    animation-range: entry 15% cover 40%;
+    animation-fill-mode: both;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tip-i .image-mascota{
@@ -102,6 +112,18 @@
 .tip-i .descripcion-i p{
     font-size: 1.1rem;
     margin: 0;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @media (max-width:700px) {
