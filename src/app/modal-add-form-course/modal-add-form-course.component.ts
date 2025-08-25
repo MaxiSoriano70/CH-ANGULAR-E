@@ -13,39 +13,53 @@ import { Course } from '../../shared/entities';
 export class ModalAddFormCourseComponent {
   courseForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {}
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) { }
 
   close() {
     this.activeModal.dismiss();
   }
 
   ngOnInit() {
-      this.courseForm = this.formBuilder.group({
-        name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.pattern(/^[a-zA-Z0-9 ]+$/)
-          ]
-        ],
-        code: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.pattern(/^[a-zA-Z0-9]+$/)
-          ]
-        ],
-        credits: [
-          null,
-          [
-            Validators.required,
-            Validators.min(1),
-            Validators.max(100)
-          ]
+    this.courseForm = this.formBuilder.group({
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern(/^[a-zA-Z0-9 ]+$/)
         ]
-      });
+      ],
+      code: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern(/^[a-zA-Z0-9]+$/)
+        ]
+      ],
+      credits: [
+        null,
+        [
+          Validators.required,
+          Validators.min(1),
+          Validators.max(100)
+        ]
+      ],
+      urlImagen: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))$/i)
+        ]
+      ],
+      description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10)
+        ]
+      ]
+    });
   }
 
   onSubmit() {

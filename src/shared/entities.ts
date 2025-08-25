@@ -16,5 +16,7 @@ export interface Course{
     id: Number,
     name: String,
     code: String,
-    credits: number
+    credits: number,
+    urlImagen: String,
+    description: String
 }

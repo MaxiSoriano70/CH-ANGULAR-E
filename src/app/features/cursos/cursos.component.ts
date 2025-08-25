@@ -18,10 +18,10 @@ declare const swal: any;
   styleUrl: './cursos.component.css'
 })
 
-export class CursosComponent implements OnInit{
+export class CursosComponent implements OnInit {
   courses$!: Observable<Course[]>;
 
-  constructor(private cursosApi: CursosAPIService, private modalService: NgbModal) {}
+  constructor(private cursosApi: CursosAPIService, private modalService: NgbModal) { }
   /* SUBSCRIBE NOTIFICA QUE YA LLEGO */
   ngOnInit(): void {
     this.courses$ = this.cursosApi.getCursos();
@@ -35,7 +35,7 @@ export class CursosComponent implements OnInit{
     this.cursosApi.addCurso(course).pipe(
       switchMap(() => {
         this.loadCourses();
-        return of (null);
+        return of(null);
       })
     ).subscribe({
       next: () => swal('Éxito', 'Curso agregado correctamente.', 'success'),
@@ -50,16 +50,16 @@ export class CursosComponent implements OnInit{
     modalRef.result.then((updatedCourse: Course) => {
       if (updatedCourse) {
         this.cursosApi.updateCurso(updatedCourse).pipe(
-          switchMap(() =>{
+          switchMap(() => {
             this.loadCourses();
-            return of (null);
+            return of(null);
           })
         ).subscribe({
-            next: () => swal('Éxito', 'Datos actualizados correctamente.', 'success'),
-            error: () => swal('Error', 'Ocurrió un error al actualizar el curso.', 'error')
+          next: () => swal('Éxito', 'Datos actualizados correctamente.', 'success'),
+          error: () => swal('Error', 'Ocurrió un error al actualizar el curso.', 'error')
         });
       }
-    }).catch(() => {});
+    }).catch(() => { });
   }
 
   onCourseDeleted(course: Course): void {
@@ -77,10 +77,10 @@ export class CursosComponent implements OnInit{
       dangerMode: true
     }).then((willDelete: boolean) => {
       if (willDelete) {
-        this.cursosApi.updateCurso(course).pipe(
+        this.cursosApi.deleteCurso(course).pipe(
           switchMap(() => {
             this.loadCourses();
-            return of (null);
+            return of(null);
           })
         ).subscribe({
           next: () => swal('¡Eliminado!', 'El curso fue eliminado correctamente.', 'success'),
