@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { iniciarSesion, cerrarSesion } from './sesion.actions';
-import { Sesion } from './sesion.model';
+import { iniciarSesion, cerrarSesion } from './auth.actions';
+import { Sesion } from './auth.model';
 
 export const initialState: Sesion = {
     usuarioLogueado: null

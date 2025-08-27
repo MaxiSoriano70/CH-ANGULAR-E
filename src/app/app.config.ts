@@ -6,7 +6,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideStore } from '@ngrx/store';
-import { sesionReducer } from './ngrx/sesion/sesion.reducer';
+import { sesionReducer } from './ngrx/auth/auth.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [

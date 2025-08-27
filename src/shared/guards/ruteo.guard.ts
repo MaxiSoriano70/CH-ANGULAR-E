@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Sesion } from '../../app/ngrx/sesion/sesion.model';
+
 import { map, take } from 'rxjs/operators';
+import { Sesion } from '../../app/ngrx/auth/auth.model';
 
 export function ruteoGuard(rolesPermitidos: string[] = []): CanActivateFn {
   return () => {
