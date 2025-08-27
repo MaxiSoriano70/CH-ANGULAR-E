@@ -8,8 +8,10 @@
     <div *ngIf="courses$ | async as courses; else loading">
         <article class="aCursos">
             <div *ngFor="let course of courses" class="card text-center mb-3" style="width: 18rem">
+                <img [src]="course.urlImagen" class="card-img-top" [alt]="course.name" />
                 <div class="card-body">
                     <h5 class="card-title">{{ course.name }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
                     <p class="card-text">Créditos: {{ course.credits }}</p>
                 </div>
             </div>
@@ -20,3 +22,4 @@
         <app-loading></app-loading>
     </ng-template>
 </section>
+<app-veterinaria></app-veterinaria>

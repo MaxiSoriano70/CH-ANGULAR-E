@@ -12,18 +12,20 @@ declare const swal: any;
   styleUrl: './modal-edit-form-course.component.css'
 })
 
-export class ModalEditFormCourseComponent implements OnInit{
+export class ModalEditFormCourseComponent implements OnInit {
   @Input() course!: Course;
   courseForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {}
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.courseForm = this.fb.group({
       id: [this.course.id],
       name: [this.course.name, [Validators.required]],
       code: [this.course.code, [Validators.required]],
-      credits: [this.course.credits, [Validators.required, Validators.min(1), Validators.max(100)]]
+      credits: [this.course.credits, [Validators.required, Validators.min(1), Validators.max(100)]],
+      urlImagen: [this.course.urlImagen,[Validators.required,Validators.pattern(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))$/i)]],
+      description: [this.course.description, [Validators.required, Validators.minLength(10)]]
     })
   }
 

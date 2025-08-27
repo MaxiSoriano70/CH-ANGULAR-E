@@ -4,12 +4,13 @@ import { RoutePaths } from '../../shared/routes';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalIniciarSesionComponent } from "../modal-iniciar-sesion/modal-iniciar-sesion.component";
 import { Store } from '@ngrx/store';
-import { Sesion } from '../ngrx/sesion/sesion.model';
-import { iniciarSesion, cerrarSesion } from '../ngrx/sesion/sesion.actions';
 import { Observable } from 'rxjs';
 import { User } from '../../shared/entities';
 import { CommonModule } from '@angular/common';
 import { FullnamePipe } from '../../shared/pipes/fullname.pipe';
+import { ModalEditFormPerfilComponent } from '../modal-edit-form-perfil/modal-edit-form-perfil.component';
+import { cerrarSesion, iniciarSesion } from '../ngrx/auth/auth.actions';
+import { Sesion } from '../ngrx/auth/auth.model';
 declare const swal: any;
 
 @Component({
@@ -83,5 +84,26 @@ export class NavbarComponent implements OnInit {
         });
       }
     });
+  }
+
+  abrirModalPerfil(usuario: User) {
+    const modalRef = this.modalService.open(ModalEditFormPerfilComponent, { centered: true });
+    modalRef.componentInstance.user = usuario;
+
+    modalRef.result.then(
+      (updatedUser) => {
+        if (updatedUser && typeof localStorage !== 'undefined') {
+          localStorage.setItem('usuarioLogueado', JSON.stringify(updatedUser));
+          this.store.dispatch(iniciarSesion({ usuario: updatedUser }));
+          swal({
+            title: `¡Perfil actualizado!`,
+            icon: 'success',
+            timer: 2000,
+            buttons: false
+          });
+        }
+      },
+      () => { }
+    );
   }
 }

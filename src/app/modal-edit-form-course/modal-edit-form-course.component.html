@@ -43,6 +43,28 @@
             </div>
         </div>
 
+        <!-- URL IMAGEN -->
+        <div class="mb-3">
+            <label for="courseUrlImagenEdit" class="form-label fw-bolder">URL de la Imagen:</label>
+            <input formControlName="urlImagen" type="text" class="form-control bg-input" id="courseUrlImagenEdit"
+                placeholder="Ej: https://ejemplo.com/imagen.jpg" />
+            <div *ngIf="courseForm.get('urlImagen')?.invalid && courseForm.get('urlImagen')?.touched" class="text-danger">
+                <small *ngIf="courseForm.get('urlImagen')?.errors?.['required']">La URL es obligatoria.</small>
+                <small *ngIf="courseForm.get('urlImagen')?.errors?.['pattern']">Debe ser una URL de imagen válida.</small>
+            </div>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="mb-3">
+            <label for="courseDescriptionEdit" class="form-label fw-bolder">Descripción:</label>
+            <textarea formControlName="description" class="form-control bg-input" id="courseDescriptionEdit"
+                rows="3" placeholder="Descripción del curso"></textarea>
+            <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched" class="text-danger">
+                <small *ngIf="courseForm.get('description')?.errors?.['required']">La descripción es obligatoria.</small>
+                <small *ngIf="courseForm.get('description')?.errors?.['minlength']">Debe tener al menos 10 caracteres.</small>
+            </div>
+        </div>
+
         <!-- BOTONES -->
         <div class="d-flex align-items-center justify-content-center">
             <button type="submit" class="btn btn-personalized-2 mx-1 fw-bold" aria-label="Editar Curso">
